@@ -6,7 +6,7 @@ import (
 
 func generateData(x int) []string {
 	word := "abcdefghijklmnopqrstuvwxyz"
-	data := []string{}
+	var data []string
 
 	for x > 0 {
 		x--

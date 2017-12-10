@@ -45,7 +45,6 @@ func mapDuplicate(arr []string) []string {
 	return ret
 }
 
-
 func BenchmarkTest1(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
