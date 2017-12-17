@@ -1,20 +1,28 @@
 package main
 
 import (
-	"regexp"
-	"net/http"
-	"io/ioutil"
-	"fmt"
-	"errors"
 	"encoding/json"
-	. "../throw"
+	"errors"
+	"io/ioutil"
+	"log"
+	"net/http"
 	"os"
+	"regexp"
+	"sort"
+
+	. "../throw"
 )
 
 type Address struct {
 	Value    string              `json:"value"`
 	Label    string              `json:"label"`
-	Children map[string]*Address `json:"children, omitempty"`
+	Children map[string]*Address `json:"children,omitempty"`
+}
+
+type AddressArray struct {
+	Value    string          `json:"value"`
+	Label    string          `json:"label"`
+	Children []*AddressArray `json:"children,omitempty"`
 }
 
 const URL = "http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201703/t20170310_1471429.html"
@@ -32,11 +40,12 @@ func tryHttp(times int) []byte {
 		req.Close = true
 		resp, err = client.Do(req)
 	}
-	Throw(err, "")
+	Throw(err, "请求页面失败")
 	bodyByte, err := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
 	Throw(err, "")
-	ioutil.WriteFile("address.html", bodyByte, 0777)
+	err = ioutil.WriteFile("output/address.html", bodyByte, 0777)
+	Throw(err, "")
 	return bodyByte
 }
 
@@ -52,7 +61,6 @@ func transData() map[string]*Address {
 		var err error
 		Value := item[1]
 		Label := item[2]
-		fmt.Println(Value)
 		p, err = regexp.MatchString(`^\d{2}0000$`, Value)
 		pv := Value[0:2] + "0000"
 		if p {
@@ -82,11 +90,48 @@ func transData() map[string]*Address {
 	return addressMap
 }
 
-func main() {
-	mapData := transData()
-	fmt.Println(mapData)
-	file, _ := os.Create("output.json")
-	enc := json.NewEncoder(file)
-	err := enc.Encode(mapData)
+func outputMap(data map[string]*Address) {
+	file, err := os.Create("output/map.json")
 	Throw(err, "")
+	enc := json.NewEncoder(file)
+	err = enc.Encode(data)
+	Throw(err, "")
+}
+
+func mapToArray(data map[string]*Address) []*AddressArray {
+	var resArr []*AddressArray
+	var sortKey []string
+	for k, _ := range data {
+		sortKey = append(sortKey, k)
+	}
+	sort.Strings(sortKey)
+	for _, k := range sortKey {
+		v := data[k]
+		child := mapToArray(v.Children)
+		item := AddressArray{
+			Value:    v.Value,
+			Label:    v.Label,
+			Children: child,
+		}
+		resArr = append(resArr, &item)
+	}
+	return resArr
+}
+
+func outputArray(data map[string]*Address) {
+	array := mapToArray(data)
+	file, err := os.Create("output/array.json")
+	Throw(err, "")
+	enc := json.NewEncoder(file)
+	err = enc.Encode(array)
+	Throw(err, "")
+}
+
+func main() {
+	err := os.MkdirAll("output", 0777)
+	Throw(err, "")
+	mapData := transData()
+	outputMap(mapData)
+	outputArray(mapData)
+	log.Println("done")
 }
