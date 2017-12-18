@@ -1,15 +1,25 @@
 package main
 
 import (
-	"os"
-	"archive/tar"
+	"bytes"
+	"compress/gzip"
 	"fmt"
+	"os"
 )
 
 func main() {
-	htmlTar, _ := os.Open("address_test.html.tar.gz")
-	tr := tar.NewReader(htmlTar)
-	htmlByte := []byte{}
-	tr.Read(htmlByte)
-	fmt.Println(htmlByte)
+	var err error
+	file, _ := os.Open("test.html.gz")
+	defer file.Close()
+	zr, err := gzip.NewReader(file)
+	if err != nil {
+		panic(err)
+	}
+	//defer zr.Close()
+
+	//b := new(bytes.Buffer)
+	b := bytes.Buffer{}
+	b.ReadFrom(zr)
+
+	fmt.Println(b.String())
 }
