@@ -4,6 +4,8 @@ import (
 	"io/ioutil"
 	"regexp"
 	"testing"
+	"archive/tar"
+	"os"
 )
 
 func TestHttp(t *testing.T) {
@@ -14,7 +16,9 @@ func TestHttp(t *testing.T) {
 }
 
 func TestMatch(t *testing.T) {
-	htmlByte, err := ioutil.ReadFile("address_test.html")
+	htmlTar, err := os.Open("address_test.html.tar.gz")
+	tr := tar.NewReader(htmlTar)
+	tr.Read(b)
 	if err != nil {
 		t.Fatal("打开测试html失败")
 	}
