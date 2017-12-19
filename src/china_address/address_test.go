@@ -1,11 +1,12 @@
 package main
 
 import (
-	"io/ioutil"
 	"regexp"
 	"testing"
-	"archive/tar"
 	"os"
+	"compress/gzip"
+
+	"io/ioutil"
 )
 
 func TestHttp(t *testing.T) {
@@ -16,13 +17,19 @@ func TestHttp(t *testing.T) {
 }
 
 func TestMatch(t *testing.T) {
-	htmlTar, err := os.Open("address_test.html.tar.gz")
-	tr := tar.NewReader(htmlTar)
-	tr.Read(b)
+	htmlFile, err := os.Open("address_test.html.gz")
 	if err != nil {
-		t.Fatal("打开测试html失败")
+		t.Fatal("打开address_test.html.gz失败")
 	}
-	body := string(htmlByte)
+	zr, err := gzip.NewReader(htmlFile)
+	if err != nil {
+		t.Fatal("创建Reader失败")
+	}
+	bodyByte, err := ioutil.ReadAll(zr)
+	if err != nil {
+		t.Fatal("读入bodyByte失败")
+	}
+	body := string(bodyByte)
 	reg := regexp.MustCompile(`<p class="MsoNormal">.*?<span lang="EN-US">(\d+)<span>.+?<span style="font-family: 宋体">[\p{Zs}\s]*(\p{Han}+)</span>.*?</p>`)
 	matched := reg.FindAllStringSubmatch(body, -1)
 	if len(matched) != 3508 {

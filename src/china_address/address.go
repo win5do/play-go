@@ -11,6 +11,7 @@ import (
 	"sort"
 
 	. "../throw"
+	"compress/gzip"
 )
 
 type Address struct {
@@ -44,7 +45,13 @@ func tryHttp(times int) []byte {
 	bodyByte, err := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
 	Throw(err, "")
-	err = ioutil.WriteFile("output/address.html", bodyByte, 0777)
+	htmlFile, err := os.Create("output/address.html.gz")
+	Throw(err, "")
+	defer htmlFile.Close()
+	zw := gzip.NewWriter(htmlFile)
+	_, err = zw.Write(bodyByte)
+	Throw(err, "")
+	err = zw.Close()
 	Throw(err, "")
 	return bodyByte
 }
