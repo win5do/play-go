@@ -1,4 +1,4 @@
-package benchmark
+package sort_bench
 
 import (
 	"sort"
@@ -45,6 +45,10 @@ func mapDuplicate(arr []string) []string {
 	return ret
 }
 
+func init() {
+	data = generateData(1000000)
+}
+
 func BenchmarkTest1(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -58,8 +62,4 @@ func BenchmarkTest2(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		mapDuplicate(data)
 	}
-}
-
-func init() {
-	data = generateData(1000000)
 }

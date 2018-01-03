@@ -1,4 +1,4 @@
-package benchmark
+package sort_bench
 
 import (
 	"math/rand"
