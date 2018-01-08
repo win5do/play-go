@@ -2,117 +2,92 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"os/signal"
-	"runtime"
-	"sync"
-	"syscall"
+	"net"
+	"time"
 )
 
-var wg sync.WaitGroup
+func main() {
+	l, err := net.Listen("tcp", ":8888")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("listen to 8888")
 
-type Fetcher interface {
-	// Fetch returns the body of URL and
-	// a slice of URLs found on that page.
-	Fetch(url string) (body string, urls []string, err error)
+	for {
+		conn, err := l.Accept()
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		go handleConn(conn)
+	}
 }
 
-// Crawl uses fetcher to recursively crawl
-// pages starting with url, to a maximum of depth.
-func Crawl(url string, depth int, fetcher Fetcher, m *sync.Map, ch chan []string) {
-	defer wg.Done()
-	done, _ := m.Load(url)
-	if done == true || depth <= 0 {
-		return
+func handleConn(conn net.Conn) {
+	defer conn.Close()
+	t := time.Now().Second()
+	for {
+		buf := make([]byte, 512)
+		n, err := conn.Read(buf)
+		if err != nil {
+			continue
+		}
+		fmt.Printf("%s\n", buf[:n])
+		fmt.Println("r")
+		writeTcp(conn)
+		if time.Now().Second()-t >= 3 {
+			break
+		}
 	}
-	m.Store(url, true)
-	body, urls, err := fetcher.Fetch(url)
+}
+
+func readTcp(conn net.Conn) {
+	buf := make([]byte, 512)
+	n, err := conn.Read(buf)
 	if err != nil {
 		fmt.Println(err)
-		return
 	}
-	ch <- []string{url, body}
-	for _, u := range urls {
-		wg.Add(1)
-		go Crawl(u, depth-1, fetcher, m, ch)
-	}
+	fmt.Printf("%s\n", buf[:n])
+	fmt.Println("r")
+
+	//rd := bufio.NewReader(conn)
+	//for {
+	//	s, err := rd.ReadString('\n')
+	//	fmt.Println([]byte(s))
+	//	fmt.Printf("Received data: %s\n", s)
+	//	if err != nil {
+	//		fmt.Println("Error reading", err.Error())
+	//		break
+	//	}
+	//
+	//	if s == "\r\n" {
+	//		fmt.Println("什么鬼")
+	//	}
+	//}
 }
 
-func main() {
-	m := sync.Map{}
-	ch := make(chan []string)
-	wg.Add(1)
-	setupSigusr1Trap()
-	go Crawl("http://golang.org/", 4, fetcher, &m, ch)
-	go func() {
-		wg.Wait()
-		close(ch)
-	}()
-	for res := range ch {
-		fmt.Printf("found: %s %q\n", res[0], res[1])
-	}
-}
+func writeTcp(conn net.Conn) {
+	rn := "\r\n"
+	s := "HTTP/1.1 200 OK" + rn +
+		"Date: " + time.Now().String() + rn +
+		"Content-Length: 5" + rn +
+		"Content-Type: text/plain" + rn + rn +
+		"hello"
 
-// fakeFetcher is Fetcher that returns canned results.
-type fakeFetcher map[string]*fakeResult
+	fmt.Println(s)
 
-type fakeResult struct {
-	body string
-	urls []string
-}
+	conn.Write([]byte(s))
+	fmt.Println("w")
 
-func (f fakeFetcher) Fetch(url string) (string, []string, error) {
-	if res, ok := f[url]; ok {
-		return res.body, res.urls, nil
-	}
-	return "", nil, fmt.Errorf("not found: %s", url)
-}
-
-// fetcher is a populated fakeFetcher.
-var fetcher = fakeFetcher{
-	"http://golang.org/": &fakeResult{
-		"The Go Programming Language",
-		[]string{
-			"http://golang.org/pkg/",
-			"http://golang.org/cmd/",
-		},
-	},
-	"http://golang.org/pkg/": &fakeResult{
-		"Packages",
-		[]string{
-			"http://golang.org/",
-			"http://golang.org/cmd/",
-			"http://golang.org/pkg/fmt/",
-			"http://golang.org/pkg/os/",
-		},
-	},
-	"http://golang.org/pkg/fmt/": &fakeResult{
-		"Package fmt",
-		[]string{
-			"http://golang.org/",
-			"http://golang.org/pkg/",
-		},
-	},
-	"http://golang.org/pkg/os/": &fakeResult{
-		"Package os",
-		[]string{
-			"http://golang.org/",
-			"http://golang.org/pkg/",
-		},
-	},
-}
-
-func setupSigusr1Trap() {
-	c := make(chan os.Signal, 1)
-	signal.Notify(c, syscall.SIGUSR1)
-	go func() {
-		for range c {
-			DumpStacks()
-		}
-	}()
-}
-func DumpStacks() {
-	buf := make([]byte, 16384)
-	buf = buf[:runtime.Stack(buf, true)]
-	fmt.Printf("=== BEGIN goroutine stack dump ===\n%s\n=== END goroutine stack dump ===", buf)
+	//bfw := bufio.NewWriter(conn)
+	//bfw.WriteString("HTTP/1.1 200 OK\r\n")
+	//bfw.WriteString("Date:" + time.Now().String() + "\r\n")
+	//bfw.WriteString("Content-Type:text;charset=utf8\r\n")
+	//bfw.WriteString("Content-Length:" + string(len("hello")) + "\r\n")
+	//bfw.WriteString("\r\n")
+	//bfw.WriteString("hello")
+	//err := bfw.Flush()
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
 }
