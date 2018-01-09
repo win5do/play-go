@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"net"
 	"time"
@@ -25,45 +27,37 @@ func main() {
 
 func handleConn(conn net.Conn) {
 	defer conn.Close()
-	t := time.Now().Second()
+	//t := time.Now().Unix()
 	for {
-		buf := make([]byte, 512)
-		n, err := conn.Read(buf)
+		err := readTcp(conn)
 		if err != nil {
-			continue
-		}
-		fmt.Printf("%s\n", buf[:n])
-		fmt.Println("r")
-		writeTcp(conn)
-		if time.Now().Second()-t >= 3 {
 			break
+			//if time.Now().Unix()-t >= 1 {
+			//	break
+			//}
 		}
+		writeTcp(conn)
+		//t = time.Now().Unix()
 	}
 }
 
-func readTcp(conn net.Conn) {
-	buf := make([]byte, 512)
-	n, err := conn.Read(buf)
-	if err != nil {
-		fmt.Println(err)
+func readTcp(conn net.Conn) error {
+	var err error
+	var buf bytes.Buffer
+	rd := bufio.NewReader(conn)
+	for {
+		var line []byte
+		line, _, err = rd.ReadLine()
+		fmt.Printf("Received data: %s\n", line)
+		buf.Write(line)
+		if err != nil {
+			fmt.Println("line err", err, time.Now())
+			break
+		}
 	}
-	fmt.Printf("%s\n", buf[:n])
-	fmt.Println("r")
 
-	//rd := bufio.NewReader(conn)
-	//for {
-	//	s, err := rd.ReadString('\n')
-	//	fmt.Println([]byte(s))
-	//	fmt.Printf("Received data: %s\n", s)
-	//	if err != nil {
-	//		fmt.Println("Error reading", err.Error())
-	//		break
-	//	}
-	//
-	//	if s == "\r\n" {
-	//		fmt.Println("什么鬼")
-	//	}
-	//}
+	fmt.Printf("all data: %s\n", buf)
+	return err
 }
 
 func writeTcp(conn net.Conn) {
