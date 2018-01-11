@@ -24,7 +24,7 @@ func (h *handle) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	bind := flag.String("l", "0.0.0.0:8888", "listen on ip:port")
+	bind := flag.String("l", "0.0.0.0:4567", "listen on ip:port")
 	remote := flag.String("r", "http://idea.imsxm.com:80", "reverse proxy addr")
 	flag.Parse()
 	log.Printf("Listening on %s, forwarding to %s", *bind, *remote)

@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
+	"io"
 	"net"
 	"time"
 )
@@ -18,70 +19,89 @@ func main() {
 	for {
 		conn, err := l.Accept()
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("conn err:", err)
 		}
-
 		go handleConn(conn)
 	}
 }
 
 func handleConn(conn net.Conn) {
 	defer conn.Close()
-	//t := time.Now().Unix()
-	for {
-		err := readTcp(conn)
-		if err != nil {
-			break
-			//if time.Now().Unix()-t >= 1 {
-			//	break
-			//}
+	defer fmt.Println("关闭")
+	fmt.Println("新连接：", conn.RemoteAddr())
+	t := time.Now().Unix()
+
+	go func(t *int64) {
+		for {
+			if time.Now().Unix() - *t >= 5 {
+				conn.Close()
+			}
+
+			time.Sleep(100 * time.Millisecond)
 		}
-		writeTcp(conn)
-		//t = time.Now().Unix()
+	}(&t)
+
+	for {
+		fmt.Println("这是连接：", conn.RemoteAddr())
+		data, err := readTcp(conn)
+		if err != nil {
+			if err == io.EOF {
+				fmt.Println(err, conn.RemoteAddr()) // todo del
+				continue
+			} else {
+				fmt.Println(err)
+				break
+			}
+		}
+		if (data > 0) {
+			writeTcp(conn)
+			t = time.Now().Unix()
+		} else {
+			break
+		}
 	}
 }
 
-func readTcp(conn net.Conn) error {
-	var err error
+func readTcp(conn net.Conn) (int, error) {
 	var buf bytes.Buffer
-	rd := bufio.NewReader(conn)
-	for {
-		var line []byte
-		line, _, err = rd.ReadLine()
-		fmt.Printf("Received data: %s\n", line)
-		buf.Write(line)
+	var err error
+	rd := bufio.NewScanner(conn)
+	total := 0
+
+	for rd.Scan() {
+		var n int
+		n, err = buf.Write(rd.Bytes())
 		if err != nil {
-			fmt.Println("line err", err, time.Now())
+			panic(err)
+		}
+		total += n
+		fmt.Println("读到字节：", n)
+		if n == 0 {
 			break
 		}
 	}
 
-	fmt.Printf("all data: %s\n", buf)
-	return err
+	if err = rd.Err(); err != nil {
+		fmt.Println("read err：", err)
+	}
+
+	fmt.Println("总字节数：", total, " 连接：", conn.RemoteAddr())
+
+	return total, err
 }
 
 func writeTcp(conn net.Conn) {
 	rn := "\r\n"
-	s := "HTTP/1.1 200 OK" + rn +
-		"Date: " + time.Now().String() + rn +
-		"Content-Length: 5" + rn +
-		"Content-Type: text/plain" + rn + rn +
-		"hello"
-
-	fmt.Println(s)
-
-	conn.Write([]byte(s))
-	fmt.Println("w")
-
-	//bfw := bufio.NewWriter(conn)
-	//bfw.WriteString("HTTP/1.1 200 OK\r\n")
-	//bfw.WriteString("Date:" + time.Now().String() + "\r\n")
-	//bfw.WriteString("Content-Type:text;charset=utf8\r\n")
-	//bfw.WriteString("Content-Length:" + string(len("hello")) + "\r\n")
-	//bfw.WriteString("\r\n")
-	//bfw.WriteString("hello")
-	//err := bfw.Flush()
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
+	wt := bufio.NewWriter(conn)
+	wt.WriteString("HTTP/1.1 200 OK" + rn)
+	wt.WriteString("Date: " + time.Now().String() + "\r\n")
+	wt.WriteString("Content-Length: 5" + rn)
+	wt.WriteString("Content-Type: text/plain" + rn)
+	wt.WriteString(rn)
+	wt.WriteString("hello")
+	err := wt.Flush()
+	if err != nil {
+		fmt.Println("Flush err: ", err)
+	}
+	fmt.Println("写入完毕", conn.RemoteAddr())
 }

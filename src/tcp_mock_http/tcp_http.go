@@ -40,7 +40,7 @@ func handleConn(conn net.Conn) {
 }
 
 func readTcp(conn net.Conn) error {
-	buf := make([]byte, 512)
+	buf := make([]byte, 4096)
 	n, err := conn.Read(buf)
 	if err != nil {
 		return err
