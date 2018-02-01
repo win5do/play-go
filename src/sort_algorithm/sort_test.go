@@ -40,3 +40,13 @@ func TestInsert(t *testing.T) {
 		}
 	}
 }
+
+func TestInsert2(t *testing.T) {
+	r := insert2(mockData())
+	t.Log(r)
+	for i := 0; i < 5; i++ {
+		if r[i] != i {
+			t.Fatal("排序不正确")
+		}
+	}
+}
