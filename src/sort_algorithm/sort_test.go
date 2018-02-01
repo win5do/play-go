@@ -1,17 +1,18 @@
 package sort_algorithm
 
-import "testing"
-
-var (
-	data = []int{5, 0, 4, 2, 1, 3}
+import (
+	"testing"
 )
 
-func init() {
-
+func mockData() []int {
+	data := []int{5, 0, 4, 2, 1, 3}
+	dst := make([]int, len(data))
+	copy(dst, data)
+	return dst
 }
 
 func TestBubble(t *testing.T) {
-	r := bubble(data)
+	r := bubble(mockData())
 	t.Log(r)
 	for i := 0; i < 5; i++ {
 		if r[i] != i {
@@ -21,7 +22,7 @@ func TestBubble(t *testing.T) {
 }
 
 func TestChoose(t *testing.T) {
-	r := choose(data)
+	r := choose(mockData())
 	t.Log(r)
 	for i := 0; i < 5; i++ {
 		if r[i] != i {
@@ -31,7 +32,7 @@ func TestChoose(t *testing.T) {
 }
 
 func TestInsert(t *testing.T) {
-	r := insert(data)
+	r := insert(mockData())
 	t.Log(r)
 	for i := 0; i < 5; i++ {
 		if r[i] != i {
