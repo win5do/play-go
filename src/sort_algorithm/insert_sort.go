@@ -1,6 +1,6 @@
 package sort_algorithm
 
-func insert(arr []int) []int {
+func insertSort(arr []int) []int {
 	l := len(arr)
 	for i := 1; i < l; i++ {
 		t := arr[i]
@@ -18,7 +18,7 @@ func insert(arr []int) []int {
 	return arr
 }
 
-func insert2(arr []int) []int {
+func insertSort2(arr []int) []int {
 	l := len(arr)
 	for i := 1; i < l; i++ {
 		for j := i; j >= 1; j-- {

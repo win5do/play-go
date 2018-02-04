@@ -1,6 +1,6 @@
 package sort_algorithm
 
-func choose(arr []int) []int {
+func chooseSort(arr []int) []int {
 	l := len(arr)
 	min := 0
 	for i := 0; i < l; i++ {

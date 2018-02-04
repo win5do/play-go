@@ -4,7 +4,15 @@ import "fmt"
 
 func main() {
 	//var a interface{}
-	a := "2cab"
-	b := "1b"
-	fmt.Println(a > b)
+	a := []int{1, 2, 3, 4}
+	fmt.Println(a)
+	ref(a)
+	fmt.Println(a)
+}
+
+func ref(a []int) {
+	b := append(a[:1], a[2:]...)
+
+	fmt.Println("a:", a)
+	fmt.Println("b:", b)
 }
