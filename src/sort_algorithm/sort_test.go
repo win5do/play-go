@@ -87,14 +87,20 @@ func TestInsertSort2(t *testing.T) {
 }
 
 // 快速排序排序
-func TestIQuickSort(t *testing.T) {
+func TestQuickSort(t *testing.T) {
 	r := quickSort(mockData())
 	t.Log(r)
 	check(t, r)
 }
 
-func TestIQuickSort2(t *testing.T) {
+func TestQuickSort2(t *testing.T) {
 	r := quickSort2(mockData())
+	t.Log(r)
+	check(t, r)
+}
+
+func TestShellSort(t *testing.T) {
+	r := shellSort(mockData())
 	t.Log(r)
 	check(t, r)
 }

@@ -13,7 +13,7 @@ func quickRecurse(arr []int, start, end int) [] int {
 	lp := start
 	rp := end
 
-	for {
+	for lp < rp {
 		// 从右往左找到第一个比m小的下标
 		for arr[rp] >= m && lp < rp {
 			rp--
@@ -24,17 +24,14 @@ func quickRecurse(arr []int, start, end int) [] int {
 			lp++
 		}
 
-		if lp >= rp {
-			break
-		}
-
 		arr[rp], arr[lp] = arr[lp], arr[rp]
 	}
 
 	// lp == rp
 	arr[lp], arr[start] = m, arr[lp]
-	arr = quickRecurse(arr, start, lp-1)
-	arr = quickRecurse(arr, lp+1, end)
+
+	quickRecurse(arr, start, lp-1)
+	quickRecurse(arr, lp+1, end)
 
 	return arr
 }
@@ -43,10 +40,11 @@ func quickSort2(arr []int) []int {
 	if len(arr) <= 1 {
 		return arr
 	}
-	mid := arr[0]
 	lp, rp := 0, len(arr)-1
+
 	for lp < rp {
-		if arr[lp+1] > mid {
+		// arr[0]为基准数 arr[lp]一直等于arr[0]
+		if arr[lp+1] > arr[lp] {
 			// 移到后面
 			arr[lp+1], arr[rp] = arr[rp], arr[lp+1]
 			rp--
@@ -57,15 +55,8 @@ func quickSort2(arr []int) []int {
 		}
 	}
 
-	// lp == rp
-	arr[lp] = mid
+	quickSort2(arr[:lp])
+	quickSort2(arr[lp+1:])
 
-	if lp > 1 {
-		quickSort2(arr[:lp])
-	}
-
-	if lp+1 < len(arr)-1 {
-		quickSort2(arr[lp+1:])
-	}
 	return arr
 }
