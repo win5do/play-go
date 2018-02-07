@@ -7,33 +7,24 @@ import (
 )
 
 const (
-	COUNT = 6 // 数据长度
+	COUNT = 10 // 数据长度
 )
 
 // 生成测试数据
 func mockData() []int {
-	var arr []int
-	src := make([]int, COUNT)
+	arr := make([]int, COUNT)
 	for i := 0; i < COUNT; i++ {
-		src[i] = i
+		arr[i] = i
 	}
-	random(&src, &arr)
-	return arr
-}
 
-// 乱序
-func random(srcp *[]int, arrp *[]int) {
-	src := *srcp
-	arr := *arrp
-	ls := len(src)
-	if ls <= 0 {
-		return
-	}
 	rd := rand.New(rand.NewSource(time.Now().UnixNano()))
-	index := rd.Intn(ls)
-	*arrp = append(arr, src[index])
-	*srcp = append(src[:index], src[index+1:]...)
-	random(srcp, arrp)
+	for _, i := range arr {
+		x := rd.Intn(COUNT)
+		if x != i {
+			arr[i], arr[x] = arr[x], arr[i]
+		}
+	}
+	return arr
 }
 
 // 检查排序结果
@@ -51,7 +42,7 @@ func check(t *testing.T, r []int) {
 	}
 }
 
-// 测试生产随机数据函数
+// 生产随机数据函数
 func TestMock(t *testing.T) {
 	for i := 0; i < COUNT; i++ {
 		r := mockData()
@@ -59,21 +50,21 @@ func TestMock(t *testing.T) {
 	}
 }
 
-// 测试冒泡排序
+// 冒泡排序
 func TestBubbleSort(t *testing.T) {
 	r := bubbleSort(mockData())
 	t.Log(r)
 	check(t, r)
 }
 
-// 测试选择排序
+// 选择排序
 func TestChooseSort(t *testing.T) {
 	r := chooseSort(mockData())
 	t.Log(r)
 	check(t, r)
 }
 
-// 插入排序排序
+// 插入排序
 func TestInsertSort(t *testing.T) {
 	r := insertSort(mockData())
 	t.Log(r)
@@ -86,7 +77,7 @@ func TestInsertSort2(t *testing.T) {
 	check(t, r)
 }
 
-// 快速排序排序
+// 快速排序
 func TestQuickSort(t *testing.T) {
 	r := quickSort(mockData())
 	t.Log(r)
@@ -99,8 +90,16 @@ func TestQuickSort2(t *testing.T) {
 	check(t, r)
 }
 
+// 希尔排序
 func TestShellSort(t *testing.T) {
 	r := shellSort(mockData())
+	t.Log(r)
+	check(t, r)
+}
+
+// 堆排序
+func TestHeapSort(t *testing.T) {
+	r := heapSort(mockData())
 	t.Log(r)
 	check(t, r)
 }
