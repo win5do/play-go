@@ -23,9 +23,7 @@ func insertSort2(arr []int) []int {
 	for i := 1; i < l; i++ {
 		for j := i; j >= 1; j-- {
 			if arr[j] < arr[j-1] {
-				t := arr[j]
-				arr[j] = arr[j-1]
-				arr[j-1] = t
+				swap(arr, j, j-1)
 			} else {
 				break
 			}

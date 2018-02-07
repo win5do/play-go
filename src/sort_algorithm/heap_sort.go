@@ -8,7 +8,7 @@ func heapSort(arr []int) []int {
 	fmt.Println(arr)
 
 	for i := len(arr) - 1; i > 0; i-- {
-		arr[0], arr[i] = arr[i], arr[0]
+		swap(arr, 0, i)
 		buildMaxHeap(arr[:i])
 	}
 
@@ -35,7 +35,7 @@ func buildMaxHeap(arr []int) {
 		}
 
 		if i != max {
-			arr[i], arr[max] = arr[max], arr[i]
+			swap(arr, i, max)
 		}
 	}
 }

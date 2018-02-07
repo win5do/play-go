@@ -24,11 +24,11 @@ func quickRecurse(arr []int, start, end int) [] int {
 			lp++
 		}
 
-		arr[rp], arr[lp] = arr[lp], arr[rp]
+		swap(arr, lp, rp)
 	}
 
 	// lp == rp
-	arr[lp], arr[start] = m, arr[lp]
+	swap(arr, lp, start)
 
 	quickRecurse(arr, start, lp-1)
 	quickRecurse(arr, lp+1, end)
@@ -46,11 +46,11 @@ func quickSort2(arr []int) []int {
 		// arr[0]为基准数 arr[lp]一直等于arr[0]
 		if arr[lp+1] > arr[lp] {
 			// 移到后面
-			arr[lp+1], arr[rp] = arr[rp], arr[lp+1]
+			swap(arr, lp+1, rp)
 			rp--
 		} else {
 			// 向前移
-			arr[lp+1], arr[lp] = arr[lp], arr[lp+1]
+			swap(arr, lp+1, lp)
 			lp++
 		}
 	}

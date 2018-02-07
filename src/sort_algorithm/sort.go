@@ -1,5 +1,9 @@
 package sort_algorithm
 
+func swap(arr []int, i int, j int) {
+	arr[i], arr[j] = arr[j], arr[i]
+}
+
 func compare(a interface{}, b interface{}) bool {
 	ia, ioka := a.(int)
 	ib, iokb := b.(int)

@@ -10,7 +10,7 @@ func shellSort(arr []int) []int {
 		for i := h; i < n; i++ {
 			for j := i; j >= h; j -= h {
 				if arr[j] < arr[j-h] {
-					arr[j], arr[j-h] = arr[j-h], arr[j]
+					swap(arr, j, j-h)
 				}
 			}
 		}
