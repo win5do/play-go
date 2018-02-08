@@ -71,12 +71,6 @@ func TestInsertSort(t *testing.T) {
 	check(t, r)
 }
 
-func TestInsertSort2(t *testing.T) {
-	r := insertSort2(mockData())
-	t.Log(r)
-	check(t, r)
-}
-
 // 快速排序
 func TestQuickSort(t *testing.T) {
 	r := quickSort(mockData())
@@ -93,6 +87,19 @@ func TestQuickSort2(t *testing.T) {
 // 希尔排序
 func TestShellSort(t *testing.T) {
 	r := shellSort(mockData())
+	t.Log(r)
+	check(t, r)
+}
+
+// 归并排序
+func TestMergeSort(t *testing.T) {
+	r := mergeSort(mockData())
+	t.Log(r)
+	check(t, r)
+}
+
+func TestMergeSort2(t *testing.T) {
+	r := mergeSort2(mockData())
 	t.Log(r)
 	check(t, r)
 }

@@ -1,18 +1,21 @@
 package sort_algorithm
 
 func chooseSort(arr []int) []int {
-	l := len(arr)
-	min := 0
-	for i := 0; i < l; i++ {
-		min = arr[i]
-		for j := i + 1; j < l; j++ {
+	leng := len(arr)
+
+	for i := 0; i < leng-1; i++ {
+		min := arr[i]
+
+		for j := i + 1; j < leng; j++ {
 			if arr[j] < min {
-				t := arr[j]
-				arr[j] = min
-				min = t
+				t := min
+				min = arr[j]
+				arr[j] = t
 			}
 		}
+
 		arr[i] = min
 	}
+
 	return arr
 }
