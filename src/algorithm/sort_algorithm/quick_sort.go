@@ -41,10 +41,11 @@ func quickSort2(arr []int) []int {
 		return arr
 	}
 	lp, rp := 0, len(arr)-1
+	m := arr[0]
 
 	for lp < rp {
 		// arr[0]为基准数 arr[lp]一直等于arr[0]
-		if arr[lp+1] > arr[lp] {
+		if arr[lp+1] > m {
 			// 移到后面
 			swap(arr, lp+1, rp)
 			rp--

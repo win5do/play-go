@@ -1,19 +1,19 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
-	"flag"
-	"fmt"
 )
 
 var (
-	prefix string = "img"
-	start  int    = 1
-	inDir  string = "in"
-	outDir string = "out"
+	prefix = "img"
+	start  = 1
+	inDir  = "in"
+	outDir = "out"
 )
 
 func isExist(path string) bool {

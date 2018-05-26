@@ -11,7 +11,7 @@ type Weight struct {
 	weight int
 }
 
-func WeightRandom(w []Weight) int {
+func weightRandom(w []Weight) int {
 	sum := 0
 
 	for _, i := range w {
@@ -40,6 +40,6 @@ func main() {
 		{2, 4},
 		{3, 6},
 	}
-	r := WeightRandom(w)
+	r := weightRandom(w)
 	fmt.Println("result:", r)
 }

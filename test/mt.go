@@ -2,27 +2,15 @@ package main
 
 import "fmt"
 
-func main() {
-
-}
-
-func swap(arr []int, i int, j int) {
-	arr[i], arr[j] = arr[j], arr[i]
-}
-
-func insert(arr []int) []int {
-	leng := len(arr)
-
-	for i := 1; i < leng; i++ {
-		temp := arr[i]
-		j := i
-
-		for ; j >= 1 && arr[j-1] > temp; j-- {
-			arr[j] = arr[j-1]
-		}
-
-		arr[j] = temp
+func fib(n int) {
+	a, b := -1, 1
+	for n > 0 {
+		a, b = b, a+b
+		fmt.Println(b)
+		n--
 	}
+}
 
-	return arr
+func main() {
+	fib(9)
 }
