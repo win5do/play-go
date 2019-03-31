@@ -1,4 +1,4 @@
-package linked_list
+package linkedList
 
 func removeDuplicates(head *listNode) *listNode {
 	if head == nil || head.Next == nil {

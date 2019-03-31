@@ -1,4 +1,4 @@
-package design_patterns
+package main
 
 import (
 	"container/list"
@@ -75,7 +75,7 @@ func (c *ConcreteObserver2) Update(subject Subject) {
 	println("ConcreteObserver2 value is ", subject.(*ConcreteSubject).getValue())
 }
 
-func TestObserve() {
+func main() {
 	subject := NewConcreteSubject()
 	observer1 := new(ConcreteObserver1)
 	observer2 := new(ConcreteObserver2)
