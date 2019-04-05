@@ -4,11 +4,14 @@ import (
 	"container/list"
 )
 
+// 需订阅的主题
 type Subject interface {
 	Attach(Observer) //注册观察者
 	Detach(Observer) //释放观察者
 	Notify()         //通知所有注册的观察者
 }
+
+// 观察者
 type Observer interface {
 	Update(Subject) //观察者进行更新状态
 }
@@ -53,10 +56,7 @@ func (s *ConcreteSubject) getValue() int {
 	return s.value
 }
 
-/**
- * 具体观察者 implements Observer
- *
- */
+// 具体观察者 implements Observer
 type ConcreteObserver1 struct {
 }
 
@@ -64,10 +64,7 @@ func (c *ConcreteObserver1) Update(subject Subject) {
 	println("ConcreteObserver1  value is ", subject.(*ConcreteSubject).getValue())
 }
 
-/**
- * 具体观察者 implements Observer
- *
- */
+// 具体观察者 implements Observer
 type ConcreteObserver2 struct {
 }
 
