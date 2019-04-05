@@ -1,6 +1,9 @@
-package singleton
+package main
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 type singleton struct {
 }
@@ -33,4 +36,9 @@ func getInstance2() *singleton {
 	}
 
 	return s
+}
+
+func main() {
+	fmt.Println(getInstance())
+	fmt.Println(getInstance2())
 }
