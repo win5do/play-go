@@ -29,6 +29,7 @@ func main() {
 		return
 	}
 	defer os.RemoveAll(tmpDir)
+	fmt.Printf("tmpDir: %v\n", tmpDir)
 	os.Chdir(tmpDir)
 
 	subDirToSkip := "skip"
