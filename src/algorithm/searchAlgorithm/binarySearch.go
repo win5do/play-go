@@ -1,4 +1,4 @@
-package search_algorithm
+package searchAlgorithm
 
 func BinarySearch(arr []int, key int) int {
 	left, right := 0, len(arr)-1

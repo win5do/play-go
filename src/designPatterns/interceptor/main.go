@@ -1,9 +1,10 @@
 package main
 
 import (
-	"./account"
-	"./proxy"
 	"fmt"
+
+	"playGo/src/designPatterns/interceptor/account"
+	"playGo/src/designPatterns/interceptor/proxy"
 )
 
 func main() {

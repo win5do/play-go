@@ -1,4 +1,4 @@
-package sort_algorithm
+package sortAlgorithm
 
 func quickSort(arr []int) []int {
 	return quickRecurse(arr, 0, len(arr)-1)

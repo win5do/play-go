@@ -1,4 +1,4 @@
-package search_algorithm
+package searchAlgorithm
 
 import (
 	"fmt"

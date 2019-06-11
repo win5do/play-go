@@ -1,8 +1,9 @@
 package proxy
 
 import (
-	"../account"
 	"fmt"
+
+	"playGo/src/designPatterns/interceptor/account"
 )
 
 type Proxy struct {
