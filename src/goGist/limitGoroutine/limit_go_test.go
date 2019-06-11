@@ -1,4 +1,4 @@
-package limit_go
+package limitGoroutine
 
 import (
 	"testing"

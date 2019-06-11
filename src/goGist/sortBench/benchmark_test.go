@@ -1,4 +1,4 @@
-package sort_bench
+package sortBench
 
 import (
 	"sort"
