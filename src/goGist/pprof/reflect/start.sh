@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 go build main.go
 
 ./main -cpuprofile=main.prof
