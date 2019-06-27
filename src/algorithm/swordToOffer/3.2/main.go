@@ -10,7 +10,7 @@ func duplicate(arr []int) (int, bool) {
 	}
 
 	start := 1
-	end := len(arr)
+	end := len(arr) - 1
 
 	for end >= start {
 		// equal (start + end) / 2
