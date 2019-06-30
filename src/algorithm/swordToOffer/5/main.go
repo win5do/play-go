@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 )
 
 func replaceBlank(input string) string {
@@ -20,6 +21,8 @@ func replaceBlank(input string) string {
 	originIndex := originLength - 1
 	newIndex := originIndex + 2*countBlank
 	newRune := append(originRune, make([]rune, 2*countBlank)...)
+	log.Print("originRune length: ", len(originRune))
+	log.Print("newRune length: ", len(newRune))
 
 	for originIndex >= 0 && newIndex > originIndex {
 		if newRune[originIndex] == ' ' {
@@ -40,6 +43,7 @@ func replaceBlank(input string) string {
 
 func main() {
 	fmt.Println(replaceBlank("we are happy."))
-	fmt.Println(replaceBlank(" we are happy. "))
+	fmt.Println(replaceBlank(" we are happy.  "))
 	fmt.Println(replaceBlank("we_are_happy."))
+	fmt.Println(replaceBlank(""))
 }
