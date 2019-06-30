@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"strings"
 )
 
 func replaceBlank(input string) string {
@@ -46,4 +47,6 @@ func main() {
 	fmt.Println(replaceBlank(" we are happy.  "))
 	fmt.Println(replaceBlank("we_are_happy."))
 	fmt.Println(replaceBlank(""))
+
+	fmt.Println(strings.ReplaceAll("we are happy.", " ", "%20"))
 }
