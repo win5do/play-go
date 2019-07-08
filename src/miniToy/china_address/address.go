@@ -1,6 +1,7 @@
 package main
 
 import (
+	"compress/gzip"
 	"encoding/json"
 	"errors"
 	"io/ioutil"
@@ -10,8 +11,7 @@ import (
 	"regexp"
 	"sort"
 
-	. "../throw"
-	"compress/gzip"
+	. "playGo/src/miniToy/china_address/throw"
 )
 
 type Address struct {
