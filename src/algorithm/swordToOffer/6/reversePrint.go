@@ -23,7 +23,7 @@ func (s *Stack) Pop() (int, bool) {
 	return val, true
 }
 
-func reversePrintByStack(pHead *ListNode) {
+func reverseByStack(pHead *ListNode) {
 	stack := new(Stack)
 
 	pNode := pHead
@@ -40,4 +40,16 @@ func reversePrintByStack(pHead *ListNode) {
 			fmt.Println(v)
 		}
 	}
+}
+
+func reverseByRecursion(pHead *ListNode) {
+	if pHead == nil {
+		return
+	}
+
+	if pHead.Next != nil {
+		reverseByRecursion(pHead.Next)
+	}
+
+	fmt.Println(pHead.Val)
 }
