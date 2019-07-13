@@ -4,13 +4,13 @@ import (
 	"fmt"
 )
 
-type LinkedNode struct {
+type ListNode struct {
 	Val  int
-	Next *LinkedNode
+	Next *ListNode
 }
 
-func AddToTail(pHead *LinkedNode, val int) {
-	pNew := new(LinkedNode)
+func AddToTail(pHead *ListNode, val int) {
+	pNew := new(ListNode)
 	pNew.Val = val
 	pNew.Next = nil
 
@@ -27,7 +27,7 @@ func AddToTail(pHead *LinkedNode, val int) {
 	pNode.Next = pNew
 }
 
-func RemoveNode(pHead *LinkedNode, val int) *LinkedNode {
+func RemoveNode(pHead *ListNode, val int) *ListNode {
 	if pHead == nil {
 		return nil
 	}
@@ -54,10 +54,32 @@ func RemoveNode(pHead *LinkedNode, val int) *LinkedNode {
 	return pHead
 }
 
-func PrintListNode(pHead *LinkedNode) {
+func PrintList(pHead *ListNode) {
 	pNode := pHead
 	for pNode != nil {
 		fmt.Println(pNode.Val)
 		pNode = pNode.Next
 	}
+}
+
+func makeList(x int) *ListNode {
+	if x < 1 {
+		return nil
+	}
+
+	pHead := &ListNode{
+		Val: 0,
+	}
+
+	i := 1
+	pNode := pHead
+	for i < x {
+		pNode.Next = &ListNode{
+			Val: i,
+		}
+		pNode = pNode.Next
+		i++
+	}
+
+	return pHead
 }
