@@ -53,3 +53,21 @@ func reverseByRecursion(pHead *ListNode) {
 
 	fmt.Println(pHead.Val)
 }
+
+func reverseLinkedList(pHead *ListNode) *ListNode {
+	if pHead == nil {
+		return nil
+	}
+
+	var pNodePrev *ListNode
+	pNode := pHead
+
+	for pNode != nil {
+		pNodeNext := pNode.Next
+		pNode.Next = pNodePrev
+		pNodePrev = pNode
+		pNode = pNodeNext
+	}
+
+	return pNodePrev
+}
