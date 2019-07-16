@@ -2,29 +2,12 @@ package main
 
 import (
 	"fmt"
+
+	"playGo/src/algorithm/swordToOffer/dataStruct/stack"
 )
 
-type Stack struct {
-	slice []int
-}
-
-func (s *Stack) Push(val int) {
-	s.slice = append(s.slice, val)
-}
-
-func (s *Stack) Pop() (int, bool) {
-	l := len(s.slice)
-	if l == 0 {
-		return -0, false
-	}
-
-	val := s.slice[l-1]
-	s.slice = s.slice[:l-1]
-	return val, true
-}
-
 func reverseByStack(pHead *ListNode) {
-	stack := new(Stack)
+	stack := new(stack.Stack)
 
 	pNode := pHead
 	for pNode != nil {
@@ -32,13 +15,9 @@ func reverseByStack(pHead *ListNode) {
 		pNode = pNode.Next
 	}
 
-	ok := true
-	for ok {
-		var v int
-		v, ok = stack.Pop()
-		if ok {
-			fmt.Println(v)
-		}
+	for stack.Size() > 0 {
+		v := stack.Pop()
+		fmt.Println(v)
 	}
 }
 
