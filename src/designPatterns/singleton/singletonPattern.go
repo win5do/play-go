@@ -5,13 +5,12 @@ import (
 	"sync"
 )
 
-type singleton struct {
-}
+type singleton struct{}
 
 var s *singleton
-var lock sync.Mutex
 
-// method1
+// method-1
+var lock sync.Mutex
 
 func getInstance() *singleton {
 	if s == nil {
@@ -25,7 +24,7 @@ func getInstance() *singleton {
 	return s
 }
 
-// method2
+// method-2
 var one sync.Once
 
 func getInstance2() *singleton {
