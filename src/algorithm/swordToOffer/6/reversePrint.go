@@ -6,33 +6,35 @@ import (
 	"playGo/src/algorithm/swordToOffer/dataStruct/stack"
 )
 
-func reverseByStack(pHead *ListNode) {
-	stack := new(stack.Stack)
+// 从尾到头打印链表
+func reversePrint_stack(pHead *ListNode) {
+	stacka := new(stack.Stack)
 
 	pNode := pHead
 	for pNode != nil {
-		stack.Push(pNode.Val)
+		stacka.Push(pNode.Val)
 		pNode = pNode.Next
 	}
 
-	for stack.Size() > 0 {
-		v := stack.Pop()
+	for stacka.Size() > 0 {
+		v := stacka.Pop()
 		fmt.Println(v)
 	}
 }
 
-func reverseByRecursion(pHead *ListNode) {
+func reversePrint_recursion(pHead *ListNode) {
 	if pHead == nil {
 		return
 	}
 
 	if pHead.Next != nil {
-		reverseByRecursion(pHead.Next)
+		reversePrint_recursion(pHead.Next)
 	}
 
 	fmt.Println(pHead.Val)
 }
 
+// 翻转链表
 func reverseLinkedList(pHead *ListNode) *ListNode {
 	if pHead == nil {
 		return nil

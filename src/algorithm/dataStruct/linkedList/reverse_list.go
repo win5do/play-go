@@ -1,17 +1,17 @@
 package linkedList
 
-func reverseList(head *listNode) *listNode {
+func reverseList_recurse(head *listNode) *listNode {
 	if head.Next == nil {
 		return head
 	}
 
-	node := reverseList(head.Next)
+	node := reverseList_recurse(head.Next)
 	head.Next.Next = head
 	head.Next = nil
 	return node
 }
 
-func reverseList2(head *listNode) *listNode {
+func reverseList_loop(head *listNode) *listNode {
 	var pre *listNode
 	for head != nil {
 		next := head.Next

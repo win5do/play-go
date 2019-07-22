@@ -1,10 +1,10 @@
 package linkedList
 
-func removeDuplicates(head *listNode) *listNode {
+func removeDuplicates_recurse(head *listNode) *listNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
-	head.Next = removeDuplicates(head.Next)
+	head.Next = removeDuplicates_recurse(head.Next)
 
 	if head.Val == head.Next.Val {
 		head.Next = head.Next.Next
@@ -13,7 +13,7 @@ func removeDuplicates(head *listNode) *listNode {
 	return head
 }
 
-func removeDuplicates2(head *listNode) *listNode {
+func removeDuplicates_loop(head *listNode) *listNode {
 	cur := head
 	for cur != nil && cur.Next != nil {
 		if cur.Val == cur.Next.Val {

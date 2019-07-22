@@ -5,11 +5,11 @@ import (
 )
 
 func TestReversePrintByStack(t *testing.T) {
-	reverseByStack(makeList(10))
+	reversePrint_stack(makeList(10))
 }
 
 func TestReverseByRecursion(t *testing.T) {
-	reverseByRecursion(makeList(10))
+	reversePrint_recursion(makeList(10))
 }
 
 func TestReverseLinkedList(t *testing.T) {

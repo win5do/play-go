@@ -12,7 +12,7 @@ var s *singleton
 // method-1
 var lock sync.Mutex
 
-func getInstance() *singleton {
+func getInstance_lock() *singleton {
 	if s == nil {
 		lock.Lock()
 		defer lock.Unlock()
@@ -27,7 +27,7 @@ func getInstance() *singleton {
 // method-2
 var one sync.Once
 
-func getInstance2() *singleton {
+func getInstance_once() *singleton {
 	if s == nil {
 		one.Do(func() {
 			s = new(singleton)
@@ -38,6 +38,6 @@ func getInstance2() *singleton {
 }
 
 func main() {
-	fmt.Println(getInstance())
-	fmt.Println(getInstance2())
+	fmt.Println(getInstance_lock())
+	fmt.Println(getInstance_once())
 }

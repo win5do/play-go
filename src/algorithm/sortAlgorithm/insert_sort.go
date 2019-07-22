@@ -6,10 +6,12 @@ func insertSort(arr []int) []int {
 	for i := 1; i < leng; i++ {
 		temp := arr[i]
 		j := i - 1
-		for ; j >= 0 && temp < arr[j]; j-- {
-			arr[j+1] = arr[j]
 
+		for j >= 0 && temp < arr[j] {
+			arr[j+1] = arr[j]
+			j--
 		}
+
 		arr[j+1] = temp
 	}
 
