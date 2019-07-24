@@ -26,8 +26,7 @@ func TestDeepFirstSearch(t *testing.T) {
 
 func TestBreathedFirstSearch(t *testing.T) {
 	tree := ConstructTree([]string{"a", "b", "d", "e", "c", "f", "g"})
-	var list []*BinaryTreeNode
-	found := BreadthFirstSearch(tree, tree.Right.Right, &list)
+	list, found := BreadthFirstSearch(tree, tree.Right.Left)
 	require.True(t, found)
 	for _, v := range list {
 		t.Log(v.Val)

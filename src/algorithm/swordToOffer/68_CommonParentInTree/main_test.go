@@ -36,10 +36,20 @@ func TestGetCommonParent_list(t *testing.T) {
 			b:      head.Left.Right,
 			expect: head.Left,
 		},
+		// 相同节点
+		{
+			a:      head,
+			b:      head,
+			expect: nil,
+		},
 	}
 
 	for _, c := range cs {
-		r := getCommonParent_list(head, c.a, c.b)
+		r := getCommonParent_dfs(head, c.a, c.b)
+		t.Log(r)
+		require.Equal(t, c.expect, r)
+
+		r = getCommonParent_bfs(head, c.a, c.b)
 		t.Log(r)
 		require.Equal(t, c.expect, r)
 	}

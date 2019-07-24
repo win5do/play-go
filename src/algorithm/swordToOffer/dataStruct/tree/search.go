@@ -31,37 +31,38 @@ func DeepFirstSearch(head, node *BinaryTreeNode, list *[]*BinaryTreeNode) (found
 }
 
 // BFS
-func BreadthFirstSearch(head, node *BinaryTreeNode, list *[]*BinaryTreeNode) (found bool) {
+func BreadthFirstSearch(head, node *BinaryTreeNode) (list []*BinaryTreeNode, found bool) {
 	if head == nil || node == nil {
-		return false
+		return nil, false
 	}
 
-	var quene []*BinaryTreeNode
+	// 二维数组记录路径
+	var quene [][]*BinaryTreeNode
 
-	quene = append(quene, head)
-
-	level := 0
+	quene = append(quene, []*BinaryTreeNode{head})
 
 	for len(quene) > 0 {
-		pop := quene[0]
+		// pop
+		path := quene[0]
 		quene = quene[1:]
 
-		// list为搜索路径
-		*list = append(*list, pop)
-		if pop == node {
-			return true
+		// 对比最后一个元素
+		last := path[len(path)-1]
+
+		if last == node {
+			return path, true
 		}
 
-		if pop.Left != nil {
-			quene = append(quene, pop.Left)
+		if last.Left != nil {
+			newPath := append(path, last.Left)
+			quene = append(quene, newPath)
 		}
 
-		if pop.Right != nil {
-			quene = append(quene, pop.Right)
+		if last.Right != nil {
+			newPath := append(path, last.Right)
+			quene = append(quene, newPath)
 		}
-
-		level++
 	}
 
-	return false
+	return nil, false
 }
