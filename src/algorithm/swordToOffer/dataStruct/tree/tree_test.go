@@ -39,6 +39,11 @@ func TestConstructTree(t *testing.T) {
 	}
 }
 
+func TestPostOrderTraversal(t *testing.T) {
+	tree := ConstructTree([]string{"a", "b", "c", "d", "e", "f"})
+	PostOrderTraversal(tree)
+}
+
 func TestBreadthFirstTravel(t *testing.T) {
 	tree := ConstructTree([]string{"a", "b", "c", "d", "e", "f"})
 	BreadthFirstTravel(tree)

@@ -1,9 +1,5 @@
 package tree
 
-import (
-	"fmt"
-)
-
 type BinaryTreeNode struct {
 	Val   string
 	Left  *BinaryTreeNode
@@ -40,60 +36,4 @@ func ConstructTree(items []string) (tree *BinaryTreeNode) {
 	}
 
 	return tree
-}
-
-// func DeepFirstTraversal(pHead, pNode *BinaryTreeNode) (list []*BinaryTreeNode, found bool) {
-// }
-
-// 深度优先遍历
-func PreOrderTraversal(root *BinaryTreeNode) {
-	if root == nil {
-		return
-	}
-
-	fmt.Println(root.Val)
-	PreOrderTraversal(root.Left)
-	PreOrderTraversal(root.Right)
-}
-
-func InOrderTraversal(root *BinaryTreeNode) {
-	if root == nil {
-		return
-	}
-
-	InOrderTraversal(root.Left)
-	fmt.Println(root.Val)
-	InOrderTraversal(root.Right)
-}
-
-func PostOrderTraversal(root *BinaryTreeNode) {
-	if root == nil {
-		return
-	}
-
-	PostOrderTraversal(root.Left)
-	PostOrderTraversal(root.Right)
-	fmt.Println(root.Val)
-}
-
-// 广度优先遍历
-func BreadthFirstTravel(root *BinaryTreeNode) {
-	if root == nil {
-		return
-	}
-
-	var list []*BinaryTreeNode
-	list = append(list, root)
-
-	for len(list) > 0 {
-		node := list[0]
-		list = list[1:]
-		fmt.Println(node.Val)
-		if node.Left != nil {
-			list = append(list, node.Left)
-		}
-		if node.Right != nil {
-			list = append(list, node.Right)
-		}
-	}
 }
