@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/src/algorithm/swordToOffer/struct/stack"
+	"playGo/src/algorithm/swordToOffer/dataStruct/stack"
 )
 
 type Queue struct {
