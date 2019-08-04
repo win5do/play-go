@@ -56,6 +56,8 @@ func maxProductAfterCutting_greedy(n int) int {
 		return 2
 	}
 
+	// 证明：n>=5时 2(n-2)>n 3(n-3)>n 3(n-3)>=2(n-2)
+	// 所以尽可能的多剪长度为3的绳子段，剩下4时剪成2*2
 	timesOf3 := n / 3
 	if n-timesOf3*3 == 1 {
 		timesOf3 -= 1
