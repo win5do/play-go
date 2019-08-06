@@ -32,3 +32,12 @@ func NumberOf1_leftShift(n int) (count int) {
 	}
 	return count
 }
+
+func NumberOf1_and(n int) (count int) {
+	for n != 0 {
+		count++
+		// 把一个整数减1再和原整数做按位与运算，会把该整数最右边的1变为0
+		n = (n - 1) & n
+	}
+	return count
+}
