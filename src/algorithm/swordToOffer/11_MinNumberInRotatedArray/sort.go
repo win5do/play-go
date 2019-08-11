@@ -1,6 +1,7 @@
 package main
 
-// 0~99
+// 对公司所有员工年龄排序，有几万名员工。
+// 利用年龄在0~99范围的特性。
 func sortAges(ages []int) {
 	timesOfAge := make([]int, 100)
 
