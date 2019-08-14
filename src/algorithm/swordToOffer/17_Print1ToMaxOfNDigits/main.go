@@ -5,6 +5,10 @@ import (
 	"strconv"
 )
 
+// 面试题17：打印1到最大的n位数
+// 题目：输入数字n，按顺序打印出从1最大的n位十进制数。比如输入3，则
+// 打印出1、2、3一直到最大的3位数即999。
+
 // n很大时会溢出
 func print1ToN_onlySmall(n int) {
 	x := 1
@@ -17,7 +21,7 @@ func print1ToN_onlySmall(n int) {
 	}
 }
 
-// 在string上模拟数字加法
+// --- 在string上模拟数字加法 ---
 func print1ToN_string(n int) {
 	if n <= 0 {
 		return
@@ -89,4 +93,31 @@ func printNumberString(str string) {
 	}
 
 	fmt.Println(str[start:])
+}
+
+// --- 递归数字排列 ---
+func print1ToN_recurse(n int) {
+	if n <= 0 {
+		return
+	}
+
+	numberStr := ""
+	for i := 0; i < n; i++ {
+		numberStr += "0"
+	}
+
+	rs := []rune(numberStr)
+	print1ToNRecurse(rs, 0)
+}
+
+func print1ToNRecurse(rs []rune, index int) {
+	if index == len(rs) {
+		printNumberString(string(rs))
+		return
+	}
+
+	for i := 0; i < 10; i++ {
+		rs[index] = rune(strconv.Itoa(i)[0])
+		print1ToNRecurse(rs, index+1)
+	}
 }
