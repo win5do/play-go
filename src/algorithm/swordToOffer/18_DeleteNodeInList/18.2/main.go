@@ -21,11 +21,13 @@ func deleteDuplication(pHead *linkedList.ListNode)  {
 			prevNode = pNode
 			pNode = pNode.Next
 		} else {
+			// 检查是不是有连续重复的节点，将prevNode指向下一个不重复的节点
 			for pNode.Next != nil && pNode.Next.Val == prevNode.Val {
 				pNode = pNode.Next
 			}
 
 			prevNode.Next = pNode.Next
+			pNode = pNode.Next
 		}
 	}
 }
