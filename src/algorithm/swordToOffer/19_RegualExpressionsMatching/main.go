@@ -23,7 +23,7 @@ func match(str, pattern string) bool {
 			return match(str[1:], pattern) || match(str[1:], pattern[2:])
 		} else {
 			// 不匹配，模式跳过.*
-			// len(str) == 0但pattern还剩若干.*的情况也成立
+			// len(str) == 0 但pattern还剩若干.*的情况也成立
 			return match(str, pattern[2:])
 		}
 	}
