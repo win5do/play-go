@@ -1,5 +1,8 @@
 package main
 
+// 面试题：excel中用A表示第1列，B表示第2列......Z表示第26列，AA表示第27列，AB表示28列。请实现一个函数输入字母变化，输出他是第几列。
+
+// 本质上是把十进制数用A~Z表示成26进制。这个26进制是从1开始，而不是0，所以是满27进1。
 var alphabetMap = make(map[rune]int, 26)
 
 func init() {
