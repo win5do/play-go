@@ -1,12 +1,9 @@
 package main
 
-var intMap = make(map[rune]bool, 10)
-
-func init() {
-	for _, v := range "0123456789" {
-		intMap[v] = true
-	}
-}
+// 面试题20：表示数值的字符串
+// 题目：请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，
+// 字符串“+100”、“5e2”、“-123”、“3.1416”及“-1E-16”都表示数值，但“12e”、
+// “1a3.14”、“1.2.3”、“+-5”及“12e+5.4”都不是
 
 func isNumeric(str string) bool {
 	rest := []rune(str)
@@ -38,6 +35,14 @@ func isNumeric(str string) bool {
 	}
 
 	return false
+}
+
+var intMap = make(map[rune]bool, 10)
+
+func init() {
+	for _, v := range "0123456789" {
+		intMap[v] = true
+	}
 }
 
 func scanInteger(rest []rune, signed bool) ([]rune, bool) {
