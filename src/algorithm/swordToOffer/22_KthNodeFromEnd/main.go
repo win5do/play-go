@@ -47,13 +47,6 @@ func traversal(pHead *linkedList.ListNode, k int) (*linkedList.ListNode, int) {
 		return nil, 0
 	}
 
-	if pHead.Next == nil {
-		if k == 1 {
-			return pHead, 1
-		}
-		return nil, 1
-	}
-
 	result, n := traversal(pHead.Next, k)
 	n++
 
