@@ -1,7 +1,7 @@
 package linkedList
 
 func reverseList_recurse(head *listNode) *listNode {
-	if head.Next == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 
