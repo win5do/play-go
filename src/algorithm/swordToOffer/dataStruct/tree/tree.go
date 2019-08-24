@@ -1,13 +1,13 @@
 package tree
 
-type BinaryTreeNode struct {
+type Tree struct {
 	Val   string
-	Left  *BinaryTreeNode
-	Right *BinaryTreeNode
+	Left  *Tree
+	Right *Tree
 }
 
 // 前序遍历顺序完全二叉树
-func ConstructTree(items []string) (tree *BinaryTreeNode) {
+func ConstructTree(items []string) (tree *Tree) {
 	n := len(items)
 	if n == 0 {
 		return nil
@@ -17,7 +17,7 @@ func ConstructTree(items []string) (tree *BinaryTreeNode) {
 		return nil
 	}
 
-	tree = new(BinaryTreeNode)
+	tree = new(Tree)
 	tree.Val = head
 
 	i := n/2 + 1 // 左右均分，不相等时左比右多1

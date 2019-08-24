@@ -12,9 +12,9 @@ func TestGetCommonParent_list(t *testing.T) {
 	head := tree.ConstructTree([]string{"a", "b", "c", "d", "e", "f", "g"})
 
 	cs := []struct {
-		a      *tree.BinaryTreeNode
-		b      *tree.BinaryTreeNode
-		expect *tree.BinaryTreeNode
+		a      *tree.Tree
+		b      *tree.Tree
+		expect *tree.Tree
 	}{
 		{
 			a:      head.Left,
@@ -23,7 +23,7 @@ func TestGetCommonParent_list(t *testing.T) {
 		},
 		{
 			a:      head.Left,
-			b:      new(tree.BinaryTreeNode),
+			b:      new(tree.Tree),
 			expect: nil,
 		},
 		{

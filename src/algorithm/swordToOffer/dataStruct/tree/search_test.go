@@ -16,7 +16,7 @@ import (
 
 func TestDeepFirstSearch(t *testing.T) {
 	tree := ConstructTree([]string{"a", "b", "c", "d", "e", "f", "g"})
-	var list []*BinaryTreeNode
+	var list []*Tree
 	found := DeepFirstSearch(tree, tree.Left.Right, &list)
 	require.True(t, found)
 	for _, v := range list {

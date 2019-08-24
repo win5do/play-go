@@ -1,7 +1,7 @@
 package tree
 
 // DFS
-func DeepFirstSearch(head, node *BinaryTreeNode, list *[]*BinaryTreeNode) (found bool) {
+func DeepFirstSearch(head, node *Tree, list *[]*Tree) (found bool) {
 	if head == nil || node == nil {
 		return false
 	}
@@ -31,15 +31,15 @@ func DeepFirstSearch(head, node *BinaryTreeNode, list *[]*BinaryTreeNode) (found
 }
 
 // BFS
-func BreadthFirstSearch(head, node *BinaryTreeNode) (list []*BinaryTreeNode, found bool) {
+func BreadthFirstSearch(head, node *Tree) (list []*Tree, found bool) {
 	if head == nil || node == nil {
 		return nil, false
 	}
 
 	// 二维数组记录路径
-	var quene [][]*BinaryTreeNode
+	var quene [][]*Tree
 
-	quene = append(quene, []*BinaryTreeNode{head})
+	quene = append(quene, []*Tree{head})
 
 	for len(quene) > 0 {
 		// pop

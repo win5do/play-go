@@ -5,7 +5,7 @@ import (
 )
 
 // 深度优先遍历
-func PreOrderTraversal(head *BinaryTreeNode) {
+func PreOrderTraversal(head *Tree) {
 	if head == nil {
 		return
 	}
@@ -15,7 +15,7 @@ func PreOrderTraversal(head *BinaryTreeNode) {
 	PreOrderTraversal(head.Right)
 }
 
-func InOrderTraversal(head *BinaryTreeNode) {
+func InOrderTraversal(head *Tree) {
 	if head == nil {
 		return
 	}
@@ -25,7 +25,7 @@ func InOrderTraversal(head *BinaryTreeNode) {
 	InOrderTraversal(head.Right)
 }
 
-func PostOrderTraversal(head *BinaryTreeNode) {
+func PostOrderTraversal(head *Tree) {
 	if head == nil {
 		return
 	}
@@ -36,12 +36,12 @@ func PostOrderTraversal(head *BinaryTreeNode) {
 }
 
 // 广度优先遍历
-func BreadthFirstTravel(head *BinaryTreeNode) {
+func BreadthFirstTravel(head *Tree) {
 	if head == nil {
 		return
 	}
 
-	var list []*BinaryTreeNode
+	var list []*Tree
 	list = append(list, head)
 
 	for len(list) > 0 {
