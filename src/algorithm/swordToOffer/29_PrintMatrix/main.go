@@ -32,7 +32,7 @@ func printMatrixCircle(matrix [][]int, start int) {
 	endY := rows - start - 1
 
 	// 从左到右打印一行
-	for i := start; i < cols-start; i++ {
+	for i := start; i <= endX; i++ {
 		fmt.Println(matrix[start][i])
 	}
 
@@ -51,7 +51,7 @@ func printMatrixCircle(matrix [][]int, start int) {
 	}
 
 	// 从下到上打印一行
-	if endY-1 > start {
+	if endY-1 > start && endX > start {
 		for i := endY - 1; i >= start+1; i-- {
 			fmt.Println(matrix[i][start])
 		}
