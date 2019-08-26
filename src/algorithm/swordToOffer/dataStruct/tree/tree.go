@@ -37,3 +37,14 @@ func ConstructTree(items []string) (tree *Tree) {
 
 	return tree
 }
+
+func NewTreeNode(val string) *Tree {
+	return &Tree{
+		Val: val,
+	}
+}
+
+func ConnectTreeNodes(pParent, pLeft, pRight *Tree) {
+	pParent.Left = pLeft
+	pParent.Right = pRight
+}
