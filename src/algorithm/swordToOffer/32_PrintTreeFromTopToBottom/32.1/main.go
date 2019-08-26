@@ -7,6 +7,9 @@ import (
 	"playGo/src/algorithm/swordToOffer/dataStruct/tree"
 )
 
+// 面试题32（一）：不分行从上往下打印二叉树
+// 题目：从上往下打印出二叉树的每个结点，同一层的结点按照从左到右的顺序打印。
+
 func printTreeFromTopToBottom(pHead *tree.Tree) {
 	if pHead == nil {
 		return
@@ -19,7 +22,7 @@ func printTreeFromTopToBottom(pHead *tree.Tree) {
 		pNode := quene.Front().Value.(*tree.Tree)
 		quene.Remove(quene.Front())
 
-			fmt.Println(pNode.Val)
+		fmt.Println(pNode.Val)
 		if pNode.Left != nil {
 			quene.PushBack(pNode.Left)
 		}
