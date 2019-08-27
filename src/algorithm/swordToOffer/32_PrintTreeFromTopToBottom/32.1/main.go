@@ -19,8 +19,7 @@ func printTreeFromTopToBottom(pHead *tree.Tree) {
 	quene.PushBack(pHead)
 
 	for quene.Len() > 0 {
-		pNode := quene.Front().Value.(*tree.Tree)
-		quene.Remove(quene.Front())
+		pNode := quene.Remove(quene.Front()).(*tree.Tree)
 
 		fmt.Println(pNode.Val)
 		if pNode.Left != nil {
