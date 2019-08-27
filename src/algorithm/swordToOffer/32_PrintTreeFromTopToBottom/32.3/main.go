@@ -25,7 +25,7 @@ func printTree(pHead *tree.Tree) {
 	quene = quene1
 	quene.PushBack(pHead)
 
-	even := false
+	even := false // 当前是奇数层还是偶数层
 
 	for quene.Len() > 0 {
 		// pop
