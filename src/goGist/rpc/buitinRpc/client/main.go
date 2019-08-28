@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/rpc"
 
-	"playGo/src/rpc/common"
+	"playGo/src/goGist/rpc/buitinRpc/common"
 )
 
 func main() {
