@@ -9,7 +9,7 @@ import (
 )
 
 func TestGetCommonParent_list(t *testing.T) {
-	head := tree.ConstructTree([]string{"a", "b", "c", "d", "e", "f", "g"})
+	head := tree.ConstructTree([]int{1, 2, 3, 4, 5, 6, 7})
 
 	cs := []struct {
 		a      *tree.Tree

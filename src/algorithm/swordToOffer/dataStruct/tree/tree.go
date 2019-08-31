@@ -1,19 +1,19 @@
 package tree
 
 type Tree struct {
-	Val   string
+	Val   int
 	Left  *Tree
 	Right *Tree
 }
 
-// 前序遍历顺序完全二叉树
-func ConstructTree(items []string) (tree *Tree) {
+// 使用完全二叉树的前序遍历构造树，-1表示nil
+func ConstructTree(items []int) (tree *Tree) {
 	n := len(items)
 	if n == 0 {
 		return nil
 	}
 	head := items[0]
-	if head == "#" {
+	if head == -1 {
 		return nil
 	}
 
@@ -38,7 +38,7 @@ func ConstructTree(items []string) (tree *Tree) {
 	return tree
 }
 
-func NewTreeNode(val string) *Tree {
+func NewTreeNode(val int) *Tree {
 	return &Tree{
 		Val: val,
 	}

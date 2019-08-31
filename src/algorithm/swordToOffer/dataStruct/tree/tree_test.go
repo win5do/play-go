@@ -7,25 +7,25 @@ import (
 
 func TestConstructTree(t *testing.T) {
 	cs := []struct {
-		input []string
+		input []int
 	}{
 		{
-			[]string{"a", "b", "c", "d", "e", "f", "g"},
+			[]int{1, 2, 3, 4, 5, 6, 7},
 		},
 		{
-			[]string{"a", "b"},
+			[]int{1, 2},
 		},
 		{
-			[]string{"a", "b", "c", "d", "e", "f", "g", "h"},
+			[]int{1, 2, 3, 4, 5, 6, 7, 8},
 		},
 		{
-			[]string{"a"},
+			[]int{1},
 		},
 		{
-			[]string{"#"},
+			[]int{-1},
 		},
 		{
-			[]string{"a", "b", "c", "#", "d", "#", "e"},
+			[]int{1, 2, 3, -1, 4, -1, 5},
 		},
 	}
 
@@ -40,11 +40,11 @@ func TestConstructTree(t *testing.T) {
 }
 
 func TestPostOrderTraversal(t *testing.T) {
-	tree := ConstructTree([]string{"a", "b", "c", "d", "e", "f"})
+	tree := ConstructTree([]int{1, 2, 3, 4, 5, 6, 7})
 	PostOrderTraversal(tree)
 }
 
 func TestBreadthFirstTravel(t *testing.T) {
-	tree := ConstructTree([]string{"a", "b", "c", "d", "e", "f"})
+	tree := ConstructTree([]int{1, 2, 3, 4, 5, 6, 7})
 	BreadthFirstTravel(tree)
 }

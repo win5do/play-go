@@ -7,15 +7,15 @@ import (
 )
 
 /*
-      a
+      1
     /   \
-   b     e
+   2     5
   / \   / \
- c   d f   g
+ 3   4 6   7
 */
 
 func TestDeepFirstSearch(t *testing.T) {
-	tree := ConstructTree([]string{"a", "b", "c", "d", "e", "f", "g"})
+	tree := ConstructTree([]int{1, 2, 3, 4, 5, 6, 7})
 	var list []*Tree
 	found := DeepFirstSearch(tree, tree.Left.Right, &list)
 	require.True(t, found)
@@ -25,7 +25,7 @@ func TestDeepFirstSearch(t *testing.T) {
 }
 
 func TestBreathedFirstSearch(t *testing.T) {
-	tree := ConstructTree([]string{"a", "b", "d", "e", "c", "f", "g"})
+	tree := ConstructTree([]int{1, 2, 3, 4, 5, 6, 7})
 	list, found := BreadthFirstSearch(tree, tree.Right.Left)
 	require.True(t, found)
 	for _, v := range list {
