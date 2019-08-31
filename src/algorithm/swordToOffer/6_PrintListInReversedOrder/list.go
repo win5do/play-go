@@ -34,7 +34,7 @@ func RemoveNode(pHead *ListNode, val int) *ListNode {
 
 	if pHead.Val == val {
 		pHead = pHead.Next
-		// 必须使用返回值，因为go是值传递没办法把head设为nil，除非使用**LinkedNode
+		// 必须使用返回值，因为go是值传递没办法把head设为nil，除非使用**ListNode
 		return pHead
 	}
 
