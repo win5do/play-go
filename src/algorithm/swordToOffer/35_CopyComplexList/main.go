@@ -11,6 +11,7 @@ type complexListNode struct {
 	Sibling *complexListNode
 }
 
+// --- 方法1 ---
 func clone(pHead *complexListNode) *complexListNode {
 	if pHead == nil {
 		return nil
@@ -60,3 +61,6 @@ func divideList(pHead *complexListNode) *complexListNode {
 
 	return pClone
 }
+
+// --- 方法2 ---
+// 克隆每一个节点，建立一个包含node->node'映射关系的map，然后将sib替换为sib'。
