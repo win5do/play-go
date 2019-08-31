@@ -8,19 +8,19 @@ import (
 // 题目：输入一棵二叉树和一个整数，打印出二叉树中结点值的和为输入整数的所
 // 有路径。从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
 
-func findPath(pHead *tree.Tree, number int) [][]*tree.Tree {
+func findPath(pHead *tree.Tree, expectedSum int) [][]*tree.Tree {
 	if pHead == nil {
 		return nil
 	}
 
 	result := make([][]*tree.Tree, 0)
 
-	findPathCore(pHead, number, &result, nil)
+	findPathCore(pHead, expectedSum, &result, nil, 0)
 
 	return result
 }
 
-func findPathCore(pNode *tree.Tree, number int, result *[][]*tree.Tree, path []*tree.Tree) {
+func findPathCore(pNode *tree.Tree, expectedSum int, result *[][]*tree.Tree, path []*tree.Tree, currentSum int) {
 	if pNode == nil {
 		return
 	}
@@ -30,16 +30,12 @@ func findPathCore(pNode *tree.Tree, number int, result *[][]*tree.Tree, path []*
 	}
 
 	path = append(path, pNode)
+	currentSum += pNode.Val
 
-	total := 0
-	for _, v := range path {
-		total += v.Val
-	}
-
-	if total == number {
+	if currentSum == expectedSum {
 		*result = append(*result, path)
 	}
 
-	findPathCore(pNode.Left, number, result, path)
-	findPathCore(pNode.Right, number, result, path)
+	findPathCore(pNode.Left, expectedSum, result, path, currentSum)
+	findPathCore(pNode.Right, expectedSum, result, path, currentSum)
 }
