@@ -1,16 +1,16 @@
 package main
 
 import (
-	"playGo/src/algorithm/swordToOffer/dataStruct/linkedList"
+	"playGo/src/algorithm/swordToOffer/dataStruct/list"
 )
 
-func meetingNode(pHead *linkedList.ListNode) (*linkedList.ListNode, int) {
+func meetingNode(pHead *list.ListNode) (*list.ListNode, int) {
 	if pHead == nil {
 		return nil, 0
 	}
 	pAhead, pBehind := pHead, pHead
 
-	var meetingNode *linkedList.ListNode
+	var meetingNode *list.ListNode
 	for pAhead.Next != nil && pAhead.Next.Next != nil {
 		pAhead = pAhead.Next.Next
 		pBehind = pBehind.Next
@@ -37,7 +37,7 @@ func meetingNode(pHead *linkedList.ListNode) (*linkedList.ListNode, int) {
 	return meetingNode, n
 }
 
-func entryNodeInListLoop(pHead *linkedList.ListNode) *linkedList.ListNode {
+func entryNodeInListLoop(pHead *list.ListNode) *list.ListNode {
 	if pHead == nil {
 		return nil
 	}

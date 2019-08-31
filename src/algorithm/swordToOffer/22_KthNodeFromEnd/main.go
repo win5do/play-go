@@ -1,11 +1,11 @@
 package main
 
 import (
-	"playGo/src/algorithm/swordToOffer/dataStruct/linkedList"
+	"playGo/src/algorithm/swordToOffer/dataStruct/list"
 )
 
 // --- 使用两个指针遍历一次 ---
-func findKthToTail(pHead *linkedList.ListNode, k int) *linkedList.ListNode {
+func findKthToTail(pHead *list.ListNode, k int) *list.ListNode {
 	if pHead == nil || k <= 0 {
 		return nil
 	}
@@ -32,7 +32,7 @@ func findKthToTail(pHead *linkedList.ListNode, k int) *linkedList.ListNode {
 
 // --- 递归实现 ---
 // 同理还可以用栈等额外空间，没有上面的方法好
-func findKthToTail_recurse(pHead *linkedList.ListNode, k int) *linkedList.ListNode {
+func findKthToTail_recurse(pHead *list.ListNode, k int) *list.ListNode {
 	if pHead == nil || k <= 0 {
 		return nil
 	}
@@ -42,7 +42,7 @@ func findKthToTail_recurse(pHead *linkedList.ListNode, k int) *linkedList.ListNo
 	return result
 }
 
-func traversal(pHead *linkedList.ListNode, k int) (*linkedList.ListNode, int) {
+func traversal(pHead *list.ListNode, k int) (*list.ListNode, int) {
 	if pHead == nil {
 		return nil, 0
 	}

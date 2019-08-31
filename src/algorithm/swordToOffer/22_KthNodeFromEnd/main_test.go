@@ -3,27 +3,27 @@ package main
 import (
 	"testing"
 
-	"playGo/src/algorithm/swordToOffer/dataStruct/linkedList"
+	"playGo/src/algorithm/swordToOffer/dataStruct/list"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestFindKthToTail(t *testing.T) {
-	p1 := linkedList.CreateListNode(1)
-	p2 := linkedList.CreateListNode(2)
-	p3 := linkedList.CreateListNode(3)
-	p4 := linkedList.CreateListNode(4)
-	p5 := linkedList.CreateListNode(5)
+	p1 := list.CreateListNode(1)
+	p2 := list.CreateListNode(2)
+	p3 := list.CreateListNode(3)
+	p4 := list.CreateListNode(4)
+	p5 := list.CreateListNode(5)
 
-	linkedList.ConnectListNodes(p1, p2)
-	linkedList.ConnectListNodes(p2, p3)
-	linkedList.ConnectListNodes(p3, p4)
-	linkedList.ConnectListNodes(p4, p5)
+	list.ConnectListNodes(p1, p2)
+	list.ConnectListNodes(p2, p3)
+	list.ConnectListNodes(p3, p4)
+	list.ConnectListNodes(p4, p5)
 
 	cs := []struct {
-		pHead    *linkedList.ListNode
+		pHead    *list.ListNode
 		k        int
-		expected *linkedList.ListNode
+		expected *list.ListNode
 	}{
 		{pHead: p1, k: 1, expected: p5},
 		{pHead: p1, k: 5, expected: p1},

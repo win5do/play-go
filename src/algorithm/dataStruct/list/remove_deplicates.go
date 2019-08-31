@@ -1,4 +1,4 @@
-package linkedList
+package list
 
 func removeDuplicates_recurse(head *listNode) *listNode {
 	if head == nil || head.Next == nil {

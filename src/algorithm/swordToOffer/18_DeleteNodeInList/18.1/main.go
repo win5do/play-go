@@ -1,14 +1,14 @@
 package main
 
 import (
-	"playGo/src/algorithm/swordToOffer/dataStruct/linkedList"
+	"playGo/src/algorithm/swordToOffer/dataStruct/list"
 )
 
 // 面试题18（一）：在O(1)时间删除链表结点
 // 题目：给定单向链表的头指针和一个结点指针，定义一个函数在O(1)时间删除该
 // 结点。
 
-func deleteNode(pHead, toBeDeleted *linkedList.ListNode) {
+func deleteNode(pHead, toBeDeleted *list.ListNode) {
 	if pHead == nil || toBeDeleted == nil {
 		return
 	}

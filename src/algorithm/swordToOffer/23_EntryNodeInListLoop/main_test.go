@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"playGo/src/algorithm/swordToOffer/dataStruct/linkedList"
+	"playGo/src/algorithm/swordToOffer/dataStruct/list"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -11,8 +11,8 @@ import (
 func TestEntryNodeInListLoop(t *testing.T) {
 
 	type casea struct {
-		pHead    *linkedList.ListNode
-		expected *linkedList.ListNode
+		pHead    *list.ListNode
+		expected *list.ListNode
 	}
 
 	var cs []casea
@@ -24,8 +24,8 @@ func TestEntryNodeInListLoop(t *testing.T) {
 
 	// A-A
 	f = func() casea {
-		p1 := linkedList.CreateListNode(1)
-		linkedList.ConnectListNodes(p1, p1)
+		p1 := list.CreateListNode(1)
+		list.ConnectListNodes(p1, p1)
 		return casea{
 			pHead:    p1,
 			expected: p1,
@@ -35,10 +35,10 @@ func TestEntryNodeInListLoop(t *testing.T) {
 
 	// A-B-A
 	f = func() casea {
-		p1 := linkedList.CreateListNode(1)
-		p2 := linkedList.CreateListNode(2)
-		linkedList.ConnectListNodes(p1, p2)
-		linkedList.ConnectListNodes(p2, p1)
+		p1 := list.CreateListNode(1)
+		p2 := list.CreateListNode(2)
+		list.ConnectListNodes(p1, p2)
+		list.ConnectListNodes(p2, p1)
 		return casea{
 			pHead:    p1,
 			expected: p1,
@@ -48,11 +48,11 @@ func TestEntryNodeInListLoop(t *testing.T) {
 
 	// A-B-C 无环
 	f = func() casea {
-		p1 := linkedList.CreateListNode(1)
-		p2 := linkedList.CreateListNode(2)
-		p3 := linkedList.CreateListNode(3)
-		linkedList.ConnectListNodes(p1, p2)
-		linkedList.ConnectListNodes(p2, p3)
+		p1 := list.CreateListNode(1)
+		p2 := list.CreateListNode(2)
+		p3 := list.CreateListNode(3)
+		list.ConnectListNodes(p1, p2)
+		list.ConnectListNodes(p2, p3)
 		return casea{
 			pHead:    p1,
 			expected: nil,
@@ -62,12 +62,12 @@ func TestEntryNodeInListLoop(t *testing.T) {
 
 	// A-B-C
 	f = func() casea {
-		p1 := linkedList.CreateListNode(1)
-		p2 := linkedList.CreateListNode(2)
-		p3 := linkedList.CreateListNode(3)
-		linkedList.ConnectListNodes(p1, p2)
-		linkedList.ConnectListNodes(p2, p3)
-		linkedList.ConnectListNodes(p3, p1)
+		p1 := list.CreateListNode(1)
+		p2 := list.CreateListNode(2)
+		p3 := list.CreateListNode(3)
+		list.ConnectListNodes(p1, p2)
+		list.ConnectListNodes(p2, p3)
+		list.ConnectListNodes(p3, p1)
 		return casea{
 			pHead:    p1,
 			expected: p1,
@@ -77,14 +77,14 @@ func TestEntryNodeInListLoop(t *testing.T) {
 
 	// A-B-C-D-B
 	f = func() casea {
-		p1 := linkedList.CreateListNode(1)
-		p2 := linkedList.CreateListNode(2)
-		p3 := linkedList.CreateListNode(3)
-		p4 := linkedList.CreateListNode(4)
-		linkedList.ConnectListNodes(p1, p2)
-		linkedList.ConnectListNodes(p2, p3)
-		linkedList.ConnectListNodes(p3, p4)
-		linkedList.ConnectListNodes(p4, p2)
+		p1 := list.CreateListNode(1)
+		p2 := list.CreateListNode(2)
+		p3 := list.CreateListNode(3)
+		p4 := list.CreateListNode(4)
+		list.ConnectListNodes(p1, p2)
+		list.ConnectListNodes(p2, p3)
+		list.ConnectListNodes(p3, p4)
+		list.ConnectListNodes(p4, p2)
 		return casea{
 			pHead:    p1,
 			expected: p2,

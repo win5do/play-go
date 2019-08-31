@@ -1,4 +1,4 @@
-package linkedList
+package list
 
 func reverseList_recurse(head *listNode) *listNode {
 	if head == nil || head.Next == nil {

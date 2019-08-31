@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/src/algorithm/swordToOffer/dataStruct/linkedList"
+	"playGo/src/algorithm/swordToOffer/dataStruct/list"
 )
 
 // 面试题25：合并两个排序的链表
@@ -9,7 +9,7 @@ import (
 // 照递增排序的。例如输入图3.11中的链表1和链表2，则合并之后的升序链表如链
 // 表3所示。
 
-func mergeList(p1, p2 *linkedList.ListNode) *linkedList.ListNode {
+func mergeList(p1, p2 *list.ListNode) *list.ListNode {
 	if p1 == nil {
 		return p2
 	}
@@ -17,7 +17,7 @@ func mergeList(p1, p2 *linkedList.ListNode) *linkedList.ListNode {
 		return p1
 	}
 
-	var mergeHead *linkedList.ListNode
+	var mergeHead *list.ListNode
 
 	if p2.Val < p1.Val {
 		mergeHead = p2

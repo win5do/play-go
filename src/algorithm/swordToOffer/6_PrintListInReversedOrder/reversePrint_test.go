@@ -12,7 +12,7 @@ func TestReverseByRecursion(t *testing.T) {
 	reversePrint_recursion(makeList(10))
 }
 
-func TestReverseLinkedList(t *testing.T) {
-	list := reverseLinkedList(makeList(10))
+func TestReverseList(t *testing.T) {
+	list := reverseList(makeList(10))
 	PrintList(list)
 }

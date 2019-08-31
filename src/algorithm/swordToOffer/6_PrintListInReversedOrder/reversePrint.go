@@ -6,6 +6,9 @@ import (
 	"playGo/src/algorithm/swordToOffer/dataStruct/stack"
 )
 
+// 面试题6：从尾到头打印链表
+// 题目：输入一个链表的头结点，从尾到头反过来打印出每个结点的值。
+
 // 从尾到头打印链表
 func reversePrint_stack(pHead *ListNode) {
 	stacka := new(stack.Stack)
@@ -35,7 +38,7 @@ func reversePrint_recursion(pHead *ListNode) {
 }
 
 // 翻转链表
-func reverseLinkedList(pHead *ListNode) *ListNode {
+func reverseList(pHead *ListNode) *ListNode {
 	if pHead == nil {
 		return nil
 	}

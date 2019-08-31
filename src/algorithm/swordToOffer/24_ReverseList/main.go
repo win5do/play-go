@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/src/algorithm/swordToOffer/dataStruct/linkedList"
+	"playGo/src/algorithm/swordToOffer/dataStruct/list"
 )
 
 // 面试题24：反转链表
@@ -9,8 +9,8 @@ import (
 // 头结点。
 
 // --- 循环实现 ---
-func reverseList(pHead *linkedList.ListNode) *linkedList.ListNode {
-	var pPrev *linkedList.ListNode
+func reverseList(pHead *list.ListNode) *list.ListNode {
+	var pPrev *list.ListNode
 	pNode := pHead
 
 	for pNode != nil {
@@ -24,7 +24,7 @@ func reverseList(pHead *linkedList.ListNode) *linkedList.ListNode {
 }
 
 // --- 递归实现 ---
-func reverseList_recurse(pHead *linkedList.ListNode) *linkedList.ListNode {
+func reverseList_recurse(pHead *list.ListNode) *list.ListNode {
 	if pHead == nil || pHead.Next == nil {
 		return pHead
 	}
