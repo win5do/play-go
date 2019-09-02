@@ -9,7 +9,7 @@ type Tree struct {
 // 此常数表示nil
 const NilNode = -99999
 
-// 使用完全二叉树的中序遍历构造树
+// 使用完全二叉树的前序遍历构造树
 func ConstructTree(items []int) (tree *Tree) {
 	n := len(items)
 	if n == 0 {
