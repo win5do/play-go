@@ -22,10 +22,10 @@ func TestConstructTree(t *testing.T) {
 			[]int{1},
 		},
 		{
-			[]int{-1},
+			[]int{NilNode},
 		},
 		{
-			[]int{1, 2, 3, -1, 4, -1, 5},
+			[]int{1, 2, 3, NilNode, 4, NilNode, 5},
 		},
 	}
 

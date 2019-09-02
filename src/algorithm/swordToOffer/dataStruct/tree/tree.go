@@ -6,14 +6,17 @@ type Tree struct {
 	Right *Tree
 }
 
-// 使用完全二叉树的前序遍历构造树，-1表示nil
+// 此常数表示nil
+const NilNode = -99999
+
+// 使用完全二叉树的中序遍历构造树
 func ConstructTree(items []int) (tree *Tree) {
 	n := len(items)
 	if n == 0 {
 		return nil
 	}
 	head := items[0]
-	if head == -1 {
+	if head == NilNode {
 		return nil
 	}
 
