@@ -25,6 +25,8 @@ func TestConvert(t *testing.T) {
 		{input: []int{10, 6, 4}},
 		{input: []int{10, 6}},
 		{input: []int{10, tree.NilNode, 14}},
+		{input: []int{10, 6, 4, tree.NilNode, tree.NilNode}},
+		{input: []int{10, tree.NilNode, tree.NilNode, tree.NilNode, 14, tree.NilNode, 16}},
 	}
 
 	for i, v := range cs {

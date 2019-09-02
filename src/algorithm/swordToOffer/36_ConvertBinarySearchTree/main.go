@@ -17,15 +17,18 @@ func covert(pHead *tree.Tree) *tree.Tree {
 	return pHead
 }
 
+// 输出转换后的头节点和尾节点
 func convertCore(pNode *tree.Tree) (*tree.Tree, *tree.Tree) {
 	pFirst, pLast := pNode, pNode
 
 	if pNode.Right != nil {
+		// 右树next指向头节点，同时头节点prev指向当前节点
 		pNode.Right, pLast = convertCore(pNode.Right)
 		pNode.Right.Left = pNode
 	}
 
 	if pNode.Left != nil {
+		// 左树prev指向尾结点，同时尾结点next指向当前节点
 		pFirst, pNode.Left = convertCore(pNode.Left)
 		pNode.Left.Right = pNode
 	}
