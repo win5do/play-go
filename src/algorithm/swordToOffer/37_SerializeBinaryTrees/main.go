@@ -1,7 +1,8 @@
 package main
 
 import (
-	"container/list"
+	"strconv"
+	"strings"
 
 	"playGo/src/algorithm/swordToOffer/dataStruct/tree"
 )
@@ -9,33 +10,57 @@ import (
 // 面试题37：序列化二叉树
 // 题目：请实现两个函数，分别用来序列化和反序列化二叉树。
 
-func serialize(pHead *tree.Tree) []int {
-	items := make([]int, 0)
-
-	quene := list.New()
-	quene.PushBack(pHead)
-
-	for quene.Len() > 0 {
-		pNode := quene.Remove(quene.Back()).(tree.Tree)
-		items = append(items, pNode.Val)
-
-		if pNode.Right != nil {
-			quene.PushBack(pNode.Right)
-			if pNode.Left == nil {
-				quene.PushBack(tree.NewNode(tree.NilNode))
-			}
-		}
-		if pNode.Left != nil {
-			quene.PushBack(pNode.Left)
-			if pNode.Right == nil {
-				quene.PushBack(tree.NewNode(tree.NilNode))
-			}
-		}
+func serialize(pHead *tree.Tree) string {
+	if pHead == nil {
+		return ""
 	}
-
-	return items
+	var str string
+	serializeCore(pHead, &str)
+	return strings.TrimSuffix(str, ",")
 }
 
-func deserialize(items []int) *tree.Tree {
-	return tree.ConstructTree(items)
+func serializeCore(pNode *tree.Tree, str *string) {
+	if pNode == nil {
+		*str += "$,"
+		return
+	} else {
+		val := strconv.Itoa(pNode.Val)
+		*str += val + ","
+	}
+
+	serializeCore(pNode.Left, str)
+	serializeCore(pNode.Right, str)
+}
+
+func deserialize(str string) *tree.Tree {
+	if str == "" {
+		return nil
+	}
+
+	strs := strings.Split(str, ",")
+
+	return deserializeCore(&strs)
+}
+
+func deserializeCore(strs *[]string) *tree.Tree {
+	if len(*strs) == 0 {
+		return nil
+	}
+
+	s0 := (*strs)[0]
+	*strs = (*strs)[1:]
+	if s0 == "$" {
+		return nil
+	}
+
+	val, err := strconv.Atoi(s0)
+	if err != nil {
+		panic("invalid serialize")
+	}
+	pNode := tree.NewNode(val)
+
+	pNode.Left = deserializeCore(strs)
+	pNode.Right = deserializeCore(strs)
+
+	return pNode
 }
