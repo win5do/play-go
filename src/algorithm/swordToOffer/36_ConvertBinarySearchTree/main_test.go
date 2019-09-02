@@ -7,7 +7,7 @@ import (
 	"playGo/src/algorithm/swordToOffer/dataStruct/tree"
 )
 
-func travel(pHead *tree.Tree) {
+func traversal(pHead *tree.Tree) {
 	pNode := pHead
 	for pNode != nil {
 		fmt.Printf("val: %v, prev: %v, next: %v\n", pNode.Val, pNode.Left, pNode.Right)
@@ -33,7 +33,7 @@ func TestConvert(t *testing.T) {
 		fmt.Println("case:", i)
 		r := tree.ConstructTree(v.input)
 		r = covert(r)
-		travel(r)
+		traversal(r)
 		fmt.Println("---")
 	}
 }

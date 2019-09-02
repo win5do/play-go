@@ -41,7 +41,7 @@ func ConstructTree(items []int) (tree *Tree) {
 	return tree
 }
 
-func NewTreeNode(val int) *Tree {
+func NewNode(val int) *Tree {
 	return &Tree{
 		Val: val,
 	}
