@@ -37,7 +37,7 @@ func verifySequenceOfBST(seq []int) bool {
 	}
 
 	if i < length-1 {
-		right = verifySequenceOfBST(seq[i:length-1])
+		right = verifySequenceOfBST(seq[i : length-1])
 	}
 
 	return left && right

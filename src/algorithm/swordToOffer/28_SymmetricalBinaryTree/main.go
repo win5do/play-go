@@ -23,7 +23,7 @@ func symmetricalCore(p1, p2 *tree.Tree) bool {
 	if p1 == nil || p2 == nil {
 		return false
 	}
-	
+
 	if p1.Val != p2.Val {
 		return false
 	}

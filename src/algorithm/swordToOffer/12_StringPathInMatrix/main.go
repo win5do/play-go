@@ -31,7 +31,7 @@ func hasPathCore(matrix [][]string, visited [][]bool, str string, pathLength, ro
 	}
 
 	hasPath := false
-	if row >= 0 && row < len(matrix) && col >=0 && col < len(matrix[0]) && matrix[row][col] == string(str[pathLength]) && visited[row][col] == false {
+	if row >= 0 && row < len(matrix) && col >= 0 && col < len(matrix[0]) && matrix[row][col] == string(str[pathLength]) && visited[row][col] == false {
 		pathLength++
 		visited[row][col] = true
 
