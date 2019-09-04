@@ -48,7 +48,8 @@ func partition_Hoare(arr []int, start, end int) int {
 		arr[left], arr[right] = arr[right], arr[left]
 	}
 
-	// 最后left == right
+	// 最后left == right，left多走一步到right的位置
+	// 如果是取begin则应该right--放在前面
 	arr[left], arr[end] = arr[end], arr[left]
 
 	return end

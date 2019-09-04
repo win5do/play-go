@@ -78,12 +78,6 @@ func TestQuickSort(t *testing.T) {
 	check(t, r)
 }
 
-func TestQuickSort2(t *testing.T) {
-	r := quickSort2(mockData())
-	t.Log(r)
-	check(t, r)
-}
-
 // 希尔排序
 func TestShellSort(t *testing.T) {
 	r := shellSort(mockData())
