@@ -52,7 +52,7 @@ func partition_Hoare(arr []int, start, end int) int {
 	// 如果是取begin则应该right--放在前面
 	arr[left], arr[end] = arr[end], arr[left]
 
-	return end
+	return right
 }
 
 // Lomuto

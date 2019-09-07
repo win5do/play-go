@@ -32,6 +32,8 @@ func moreThanHalfNum_partition(arr []int) int {
 	end := len(arr) - 1
 	index := array.Partition(arr, start, end)
 
+	// 如果选中的数字的下标刚好是n/2，那么这个数字就是中位数
+	// 如果下标大于n/2，则中位数应该在塔左边；反之则在右边
 	for index != mid {
 		if index > mid {
 			end = index - 1
