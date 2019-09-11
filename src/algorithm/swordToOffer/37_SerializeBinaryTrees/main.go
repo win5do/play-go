@@ -19,6 +19,7 @@ func serialize(pHead *tree.Tree) string {
 	return strings.TrimSuffix(str, ",")
 }
 
+// 前序遍历
 func serializeCore(pNode *tree.Tree, str *string) {
 	if pNode == nil {
 		*str += "$,"
