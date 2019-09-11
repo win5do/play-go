@@ -13,4 +13,7 @@ func TestFunc(t *testing.T) {
 	tree.InOrderTraversal(pHead)
 	r := kthNodeInBST(pHead, 3)
 	assert.Equal(t, 4, r.Val)
+
+	r = kthNodeInBST(pHead, 10)
+	assert.Nil(t, r)
 }
