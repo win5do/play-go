@@ -5,7 +5,8 @@ import (
 	"fmt"
 )
 
-// 前序遍历 深度优先遍历
+// 前序遍历 根-左-右
+// 深度优先遍历
 func PreOrderTraversal(head *Tree) {
 	if head == nil {
 		return
@@ -16,6 +17,7 @@ func PreOrderTraversal(head *Tree) {
 	PreOrderTraversal(head.Right)
 }
 
+// 中序遍历 左-根-右
 func InOrderTraversal(head *Tree) {
 	if head == nil {
 		return
@@ -26,6 +28,7 @@ func InOrderTraversal(head *Tree) {
 	InOrderTraversal(head.Right)
 }
 
+// 后序遍历 左-右-根
 func PostOrderTraversal(head *Tree) {
 	if head == nil {
 		return
