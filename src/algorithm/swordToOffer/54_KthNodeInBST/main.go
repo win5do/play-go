@@ -16,22 +16,23 @@ func kthNodeInBST(pHead *tree.Tree, k int) *tree.Tree {
 }
 
 func kthNodeCore(pNode *tree.Tree, k *int) *tree.Tree {
+	if pNode == nil {
+		return nil
+	}
+
 	var target *tree.Tree
 
-	if pNode.Left != nil {
-		target = kthNodeCore(pNode.Left, k)
+	target = kthNodeCore(pNode.Left, k)
+	if target != nil {
+		return target
 	}
 
-	if target == nil {
-		*k--
-		if *k == 0 {
-			return pNode
-		}
+	*k--
+	if *k == 0 {
+		return pNode
 	}
 
-	if target == nil && pNode.Right != nil {
-		target = kthNodeCore(pNode.Right, k)
-	}
+	target = kthNodeCore(pNode.Right, k)
 
 	return target
 }
