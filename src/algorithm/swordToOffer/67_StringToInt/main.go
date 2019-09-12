@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"regexp"
 )
 
 // 面试题67：把字符串转换成整数
@@ -16,26 +15,28 @@ func atoi(str string) (int, error) {
 		return 0, errInvalidInput
 	}
 
-	ok, err := regexp.MatchString(`[+-]?[0-9]+$`, str)
-	if !ok || err != nil {
-		return 0, errInvalidInput
-	}
-
 	number := 0
 	minus := false
 
-	for i, v := range []rune(str) {
-		if i == 0 {
-			if v == '-' {
-				minus = true
-				continue
-			}
-
-			if v == '+' {
-				continue
-			}
+	bts := []byte(str)
+	if bts[0] == '-' || bts[0] == '+' {
+		if bts[0] == '-' {
+			minus = true
 		}
-		number = number*10 + int(v-'0')
+
+		bts = bts[1:]
+		if len(bts) < 1 {
+			return 0, errInvalidInput
+		}
+	}
+
+	for _, v := range bts {
+		n := v - '0'
+		if n > 9 {
+			return 0, errInvalidInput
+		}
+
+		number = number*10 + int(n)
 	}
 
 	if minus {
