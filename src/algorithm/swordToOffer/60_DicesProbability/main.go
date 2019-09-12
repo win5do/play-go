@@ -64,6 +64,7 @@ func printProbability_loop(n int) {
 
 		for j := i; j <= i*NUMBER; j++ {
 			results[1-flag][j] = 0
+			// 第j项等于j-1,j-2...j-6的和
 			for k := 1; k <= j && k <= NUMBER; k++ {
 				results[1-flag][j] += results[flag][j-k]
 			}
