@@ -10,6 +10,7 @@ import (
 // 的所有可能的值出现的概率。
 const NUMBER = 6
 
+// --- recurse ---
 func printProbability_recurse(n int) {
 	if n < 1 {
 		return
@@ -23,7 +24,8 @@ func printProbability_recurse(n int) {
 	total := math.Pow(NUMBER, float64(n))
 
 	for i, v := range result {
-		fmt.Printf("%d: %f\n", i+n, float64(v)/total)
+		ratio := float64(v) / total
+		fmt.Printf("%d: %f\n", i+n, ratio)
 	}
 }
 
@@ -35,5 +37,46 @@ func probability(original, rest, sum int, result []int) {
 
 	for i := 1; i <= NUMBER; i++ {
 		probability(original, rest-1, sum+i, result)
+	}
+}
+
+// --- loop ---
+func printProbability_loop(n int) {
+	if n < 1 {
+		return
+	}
+
+	results := make([][]int, 2)
+	results[0] = make([]int, n*NUMBER+1)
+	results[1] = make([]int, n*NUMBER+1)
+
+	flag := 0
+
+	for i := 1; i <= NUMBER; i++ {
+		results[flag][i] = 1
+	}
+
+	for i := 2; i <= n; i++ {
+		// 0到n-1不可能出现，置空
+		for j := 0; j < i; j++ {
+			results[1-flag][j] = 0
+		}
+
+		for j := i; j <= i*NUMBER; j++ {
+			results[1-flag][j] = 0
+			for k := 1; k <= j && k <= NUMBER; k++ {
+				results[1-flag][j] += results[flag][j-k]
+			}
+		}
+
+		// 切换数组
+		flag = 1 - flag
+	}
+
+	total := math.Pow(NUMBER, float64(n))
+
+	for i := n; i <= n*NUMBER; i++ {
+		ratio := float64(results[flag][i]) / total
+		fmt.Printf("%d: %f\n", i, ratio)
 	}
 }
