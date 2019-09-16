@@ -1,5 +1,9 @@
 package main
 
+// 面试题10：斐波那契数列
+// 题目：写一个函数，输入n，求斐波那契（Fibonacci）数列的第n项。
+
+// --- slow ---
 func fibonacciSlow(x int) int {
 	if x <= 0 {
 		return 0
@@ -12,6 +16,7 @@ func fibonacciSlow(x int) int {
 	return fibonacciSlow(x-1) + fibonacciSlow(x-2)
 }
 
+// --- loop ---
 func fibonacciLoop(x int) int {
 	a, b := 1, 0
 
@@ -21,6 +26,7 @@ func fibonacciLoop(x int) int {
 	return b
 }
 
+// --- recurse ---
 func fibonacciRecurse(x int) int {
 	return fibCore(1, 0, x)
 }
