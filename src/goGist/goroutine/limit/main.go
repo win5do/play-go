@@ -1,4 +1,4 @@
-package limitGoroutine
+package limit
 
 import (
 	"sync"
