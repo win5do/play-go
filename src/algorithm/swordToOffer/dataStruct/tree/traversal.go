@@ -45,18 +45,18 @@ func PreOrderTraversal_loop(head *Tree) {
 		return
 	}
 
-	quene := list.New() // 栈
-	quene.PushBack(head)
+	stack := list.New() // 栈
+	stack.PushBack(head)
 
-	for quene.Len() > 0 {
-		pNode := quene.Remove(quene.Back()).(Tree)
+	for stack.Len() > 0 {
+		pNode := stack.Remove(stack.Back()).(Tree)
 		fmt.Println(pNode.Val)
 
 		if pNode.Right != nil {
-			quene.PushBack(pNode.Right)
+			stack.PushBack(pNode.Right)
 		}
 		if pNode.Left != nil {
-			quene.PushBack(pNode.Left)
+			stack.PushBack(pNode.Left)
 		}
 	}
 }

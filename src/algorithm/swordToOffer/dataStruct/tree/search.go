@@ -31,20 +31,20 @@ func DeepFirstSearch(head, node *Tree, list *[]*Tree) (found bool) {
 }
 
 // BFS
-func BreadthFirstSearch(head, node *Tree) (list []*Tree, found bool) {
+func BreadthFirstSearch(head, node *Tree) (r []*Tree, found bool) {
 	if head == nil || node == nil {
 		return nil, false
 	}
 
 	// 二维数组记录路径
-	var quene [][]*Tree
+	var list [][]*Tree
 
-	quene = append(quene, []*Tree{head})
+	list = append(list, []*Tree{head})
 
-	for len(quene) > 0 {
+	for len(list) > 0 {
 		// pop
-		path := quene[0]
-		quene = quene[1:]
+		path := list[0]
+		list = list[1:]
 
 		// 对比最后一个元素
 		last := path[len(path)-1]
@@ -55,12 +55,12 @@ func BreadthFirstSearch(head, node *Tree) (list []*Tree, found bool) {
 
 		if last.Left != nil {
 			newPath := append(path, last.Left)
-			quene = append(quene, newPath)
+			list = append(list, newPath)
 		}
 
 		if last.Right != nil {
 			newPath := append(path, last.Right)
-			quene = append(quene, newPath)
+			list = append(list, newPath)
 		}
 	}
 
