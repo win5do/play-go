@@ -5,60 +5,36 @@ import (
 )
 
 func Partition(arr []int, start, end int) int {
-	return partition_Hoare(arr, start, end)
+	return partition_Lomuto(arr, start, end)
 }
 
-func QuickSort(arr []int, start, end int) {
+func QuickSort_Lomuto(arr []int, start, end int) {
 	if start >= end {
 		return
 	}
 
-	index := Partition(arr, start, end)
-	if index > start {
-		QuickSort(arr, start, index)
-	}
-	if index < end {
-		QuickSort(arr, index+1, end)
-	}
+	index := partition_Lomuto(arr, start, end)
+	QuickSort_Lomuto(arr, start, index-1)
+	QuickSort_Lomuto(arr, index+1, end)
 }
 
-// 两种partition算法对比，Hoare性能更好
+func QuickSort_Hoare(arr []int, start, end int) {
+	if start >= end {
+		return
+	}
+
+	index := partition_Lomuto(arr, start, end)
+	QuickSort_Hoare(arr, start, index)
+	QuickSort_Hoare(arr, index+1, end)
+}
+
+// 两种 partition 算法对比，Hoare 性能更好，Lomuto 实现简单
 // https://cs.stackexchange.com/questions/11458/quicksort-partitioning-hoare-vs-lomuto/11550
 
-// Hoare
-func partition_Hoare(arr []int, start, end int) int {
-	if len(arr) == 0 || start < 0 || end >= len(arr) {
-		panic("invalid input")
-	}
-
-	pivot := arr[end]
-
-	left := start
-	right := end
-
-	for left < right {
-		for left < right && arr[left] <= pivot {
-			left++
-		}
-
-		for left < right && arr[right] >= pivot {
-			right--
-		}
-
-		arr[left], arr[right] = arr[right], arr[left]
-	}
-
-	// 最后left == right，left多走一步到right的位置
-	// 如果是取begin则应该right--放在前面
-	arr[left], arr[end] = arr[end], arr[left]
-
-	return right
-}
-
-// Lomuto
+// https://en.wikipedia.org/wiki/Quicksort#Lomuto_partition_scheme
 func partition_Lomuto(arr []int, start, end int) int {
-	if len(arr) == 0 || start < 0 || end >= len(arr) {
-		panic("invalid input")
+	if start >= end {
+		return start
 	}
 
 	// 随机选一个下标作为pivot，将其暂存到末尾
@@ -67,18 +43,49 @@ func partition_Lomuto(arr []int, start, end int) int {
 	// 可以跳过random直接取end
 	pivot := arr[end]
 
-	small := start
+	l := start
 	for i := start; i < end; i++ {
 		if arr[i] < pivot {
-			if small != i {
-				// 相等则不需要swap
-				arr[i], arr[small] = arr[small], arr[i]
-			}
-			small++
+			swap(arr, i, l)
+			l++
 		}
 	}
 
 	// 将mid放到分割线
-	arr[small], arr[end] = arr[end], arr[small]
-	return small
+	swap(arr, end, l)
+	return l
+}
+
+// https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme
+func partition_Hoare(arr []int, start, end int) int {
+	if start >= end {
+		return start
+	}
+
+	pivot := arr[(start+end)/2]
+
+	left := start - 1
+	right := end + 1
+
+	for {
+		left++
+		for arr[left] < pivot {
+			left++
+		}
+
+		right--
+		for arr[right] > pivot {
+			right--
+		}
+
+		if left >= right {
+			return right
+		}
+
+		swap(arr, left, right)
+	}
+}
+
+func swap(arr []int, a, b int) {
+	arr[a], arr[b] = arr[b], arr[a]
 }
