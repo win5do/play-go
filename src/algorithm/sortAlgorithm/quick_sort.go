@@ -64,14 +64,18 @@ func Partition_Hoare(arr []int, start, end int) int {
 	right := end + 1
 
 	for {
-		left++
-		for arr[left] < pivot {
+		for {
 			left++
+			if !(arr[left] < pivot) {
+				break
+			}
 		}
 
-		right--
-		for arr[right] > pivot {
+		for {
 			right--
+			if !(arr[right] > pivot) {
+				break
+			}
 		}
 
 		if left >= right {
