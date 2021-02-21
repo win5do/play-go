@@ -7,37 +7,29 @@ import (
 )
 
 const (
-	COUNT = 10 // 数据长度
+	COUNT = 100 // 数据长度
 )
 
 // 生成测试数据
 func mockData() []int {
+	rd := rand.New(rand.NewSource(time.Now().UnixNano()))
 	arr := make([]int, COUNT)
 	for i := 0; i < COUNT; i++ {
-		arr[i] = i
+		arr[i] = rd.Intn(COUNT) - 5
 	}
 
-	rd := rand.New(rand.NewSource(time.Now().UnixNano()))
-	for _, i := range arr {
-		x := rd.Intn(COUNT)
-		if x != i {
-			arr[i], arr[x] = arr[x], arr[i]
-		}
-	}
 	return arr
 }
 
 // 检查排序结果
 func check(t *testing.T, r []int) {
 	if len(r) != COUNT {
-		t.Fatal("排序不正确")
-		return
+		t.Fatal("bug")
 	}
 
-	for i := 0; i < COUNT; i++ {
-		if r[i] != i {
-			t.Fatal("排序不正确")
-			break
+	for i := 0; i < len(r)-1; i++ {
+		if r[i] > r[i+1] {
+			t.Fatal("bug")
 		}
 	}
 }
@@ -73,9 +65,19 @@ func TestInsertSort(t *testing.T) {
 
 // 快速排序
 func TestQuickSort(t *testing.T) {
-	r := quickSort(mockData())
-	t.Log(r)
-	check(t, r)
+	t.Run("Lomuto", func(t *testing.T) {
+		arr := mockData()
+		QuickSort_Lomuto(arr, 0, len(arr)-1)
+		t.Log(arr)
+		check(t, arr)
+	})
+
+	t.Run("Hoare", func(t *testing.T) {
+		arr := mockData()
+		QuickSort_Hoare(arr, 0, len(arr)-1)
+		t.Log(arr)
+		check(t, arr)
+	})
 }
 
 // 希尔排序
@@ -87,15 +89,18 @@ func TestShellSort(t *testing.T) {
 
 // 归并排序
 func TestMergeSort(t *testing.T) {
-	r := mergeSort(mockData())
-	t.Log(r)
-	check(t, r)
-}
 
-func TestMergeSort2(t *testing.T) {
-	r := mergeSort2(mockData())
-	t.Log(r)
-	check(t, r)
+	t.Run("recurse", func(t *testing.T) {
+		r := mergeSort(mockData())
+		t.Log(r)
+		check(t, r)
+	})
+
+	t.Run("loop", func(t *testing.T) {
+		r := mergeSortLoop(mockData())
+		t.Log(r)
+		check(t, r)
+	})
 }
 
 // 堆排序

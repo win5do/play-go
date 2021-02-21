@@ -37,10 +37,10 @@ func merge(left, right []int) []int {
 }
 
 // 迭代
-func mergeSort2(arr []int) []int {
+func mergeSortLoop(arr []int) []int {
 	leng := len(arr)
 	k := 1
-	temp := []int{};
+	temp := []int{}
 	for k < leng {
 		temp = []int{}
 		for i := 0; i < leng-1; i += 2 * k {
