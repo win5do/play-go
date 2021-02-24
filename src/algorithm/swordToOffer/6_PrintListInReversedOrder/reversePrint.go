@@ -30,9 +30,7 @@ func reversePrint_recursion(pHead *ListNode) {
 		return
 	}
 
-	if pHead.Next != nil {
-		reversePrint_recursion(pHead.Next)
-	}
+	reversePrint_recursion(pHead.Next)
 
 	fmt.Println(pHead.Val)
 }
