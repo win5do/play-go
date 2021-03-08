@@ -1,13 +1,13 @@
 package sortAlgorithm
 
 func heapSort(arr []int) []int {
-	l := len(arr)
+	leng := len(arr)
 
 	// 构建大顶堆
 	buildMaxHeap(arr)
 
 	// 将根节点(最大元素)与末尾元素互换，对剩余数组构建大顶堆
-	for i := l - 1; i > 0; i-- {
+	for i := leng - 1; i > 0; i-- {
 		swap(arr, 0, i)
 		maxHeapify(arr, 0, i-1)
 	}

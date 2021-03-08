@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+//go:generate go test -v ./...
+
 const (
 	COUNT = 100 // 数据长度
 )
