@@ -53,15 +53,17 @@ func checkDuplication(arr []string) bool {
 }
 
 func TestRm(t *testing.T) {
-	size := 1000000
+	tt := []int{0, 1, 2, 1000000}
 
-	t.Run("map", func(t *testing.T) {
-		checkDuplication(removeDuplication_map(generateData(size)))
-	})
+	for _, v := range tt {
+		t.Run("map", func(t *testing.T) {
+			checkDuplication(removeDuplication_map(generateData(v)))
+		})
 
-	t.Run("sort", func(t *testing.T) {
-		checkDuplication(removeDuplication_sort(generateData(size)))
-	})
+		t.Run("sort", func(t *testing.T) {
+			checkDuplication(removeDuplication_sort(generateData(v)))
+		})
+	}
 }
 
 func BenchmarkRm(b *testing.B) {
