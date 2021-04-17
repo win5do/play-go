@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// Ref: https://www.liwenzhou.com/posts/Go/singleton_in_go/
 type singleton struct{}
 
 var s *singleton
@@ -12,7 +13,7 @@ var s *singleton
 // method-1
 var lock sync.Mutex
 
-func getInstance_lock() *singleton {
+func getInstanceDoubleCheck() *singleton {
 	if s == nil {
 		lock.Lock()
 		defer lock.Unlock()
@@ -27,17 +28,16 @@ func getInstance_lock() *singleton {
 // method-2
 var one sync.Once
 
-func getInstance_once() *singleton {
+func getInstanceSyncOnce() *singleton {
 	if s == nil {
 		one.Do(func() {
 			s = new(singleton)
 		})
 	}
-
 	return s
 }
 
 func main() {
-	fmt.Println(getInstance_lock())
-	fmt.Println(getInstance_once())
+	fmt.Println(getInstanceDoubleCheck())
+	fmt.Println(getInstanceSyncOnce())
 }
