@@ -1,0 +1,65 @@
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+BenchmarkMarshal/S=std-10         	 3861860	       295.4 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4082124	       295.2 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4091980	       294.1 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4040596	       292.8 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4097349	       292.7 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4099837	       294.7 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4001650	       297.8 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4058239	       294.2 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4093100	       293.1 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=std-10         	 4098632	       296.5 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4047105	       295.2 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4060903	       295.7 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4078480	       296.8 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4013244	       298.2 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4048369	       295.2 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4082238	       296.1 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4025827	       297.2 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4049107	       295.4 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4059099	       296.5 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/S=jtr-10         	 4053304	       299.0 ns/op	      80 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2760752	       431.9 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2797647	       429.2 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2797452	       430.9 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2789524	       432.4 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2779393	       430.6 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2781289	       434.8 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2756937	       433.1 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2791543	       428.0 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2782957	       428.0 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=std-10         	 2802675	       429.3 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2618274	       460.0 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2614219	       463.0 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2581009	       463.4 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2600916	       458.6 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2616046	       459.0 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2583414	       462.4 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2605314	       457.3 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2606066	       466.0 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2583595	       464.0 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/M=jtr-10         	 2601453	       460.5 ns/op	     192 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2426574	       494.5 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2425116	       494.1 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2396691	       494.5 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2401736	       499.0 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2400693	       498.9 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2396794	       494.8 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2409416	       497.7 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2406349	       495.6 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2402140	       494.3 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=std-10         	 2435020	       500.2 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3138252	       380.8 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3145900	       379.0 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3169687	       378.6 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3161318	       379.0 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3172873	       379.1 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3193466	       376.4 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3120618	       381.1 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3135558	       379.1 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3188482	       376.9 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMarshal/L=jtr-10         	 3165824	       379.2 ns/op	     128 B/op	       1 allocs/op
+PASS
+ok  	playGo/bench/json	96.335s

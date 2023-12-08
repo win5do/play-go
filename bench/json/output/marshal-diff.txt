@@ -1,0 +1,50 @@
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+        │     std     │                jtr                 │
+        │   sec/op    │   sec/op     vs base               │
+Marshal   294.4n ± 1%   296.3n ± 1%  +0.63% (p=0.011 n=10)
+
+        │    std     │              jtr               │
+        │    B/op    │    B/op     vs base            │
+Marshal   80.00 ± 0%   80.00 ± 0%  ~ (p=1.000 n=10) ¹
+¹ all samples are equal
+
+        │    std     │              jtr               │
+        │ allocs/op  │ allocs/op   vs base            │
+Marshal   1.000 ± 0%   1.000 ± 0%  ~ (p=1.000 n=10) ¹
+¹ all samples are equal
+---
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+        │     std     │                jtr                 │
+        │   sec/op    │   sec/op     vs base               │
+Marshal   430.8n ± 1%   461.4n ± 1%  +7.13% (p=0.000 n=10)
+
+        │    std     │              jtr               │
+        │    B/op    │    B/op     vs base            │
+Marshal   192.0 ± 0%   192.0 ± 0%  ~ (p=1.000 n=10) ¹
+¹ all samples are equal
+
+        │    std     │              jtr               │
+        │ allocs/op  │ allocs/op   vs base            │
+Marshal   1.000 ± 0%   1.000 ± 0%  ~ (p=1.000 n=10) ¹
+¹ all samples are equal
+---
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+        │     std     │                 jtr                 │
+        │   sec/op    │   sec/op     vs base                │
+Marshal   495.2n ± 1%   379.1n ± 1%  -23.46% (p=0.000 n=10)
+
+        │    std     │              jtr               │
+        │    B/op    │    B/op     vs base            │
+Marshal   128.0 ± 0%   128.0 ± 0%  ~ (p=1.000 n=10) ¹
+¹ all samples are equal
+
+        │    std     │              jtr               │
+        │ allocs/op  │ allocs/op   vs base            │
+Marshal   1.000 ± 0%   1.000 ± 0%  ~ (p=1.000 n=10) ¹
+¹ all samples are equal

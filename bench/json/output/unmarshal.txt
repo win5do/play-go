@@ -1,0 +1,65 @@
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+BenchmarkUnmarshal/S=std-10         	  608883	      1946 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  625740	      1985 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  596000	      2022 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  582638	      2056 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  600336	      1975 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  620925	      1946 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  631046	      1918 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  625075	      1961 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  612583	      1938 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=std-10         	  607808	      1942 ns/op	    1409 B/op	      29 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  826286	      1418 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  860037	      1413 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  805447	      1407 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  855127	      1404 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  856713	      1416 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  845325	      1415 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  847861	      1436 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  855061	      1426 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  859459	      1414 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/S=jtr-10         	  829524	      1427 ns/op	    1393 B/op	      34 allocs/op
+BenchmarkUnmarshal/M=std-10         	   70980	     17004 ns/op	   10339 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   70244	     17016 ns/op	   10338 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   69801	     17039 ns/op	   10340 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   70602	     17175 ns/op	   10339 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   68842	     17116 ns/op	   10339 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   69301	     17005 ns/op	   10339 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   71054	     16980 ns/op	   10339 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   70754	     17087 ns/op	   10339 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   70558	     16995 ns/op	   10340 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=std-10         	   70028	     16950 ns/op	   10338 B/op	     205 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  105514	     11213 ns/op	   11255 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  106824	     11407 ns/op	   11255 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  107150	     11269 ns/op	   11256 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  107728	     11229 ns/op	   11255 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  106389	     11150 ns/op	   11255 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  105128	     11236 ns/op	   11257 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  107746	     11185 ns/op	   11256 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  107444	     11203 ns/op	   11255 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	  106531	     11188 ns/op	   11256 B/op	     268 allocs/op
+BenchmarkUnmarshal/M=jtr-10         	   99758	     11531 ns/op	   11255 B/op	     268 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4832	    243030 ns/op	  209432 B/op	    2784 allocs/op
+BenchmarkUnmarshal/L=std-10         	    5044	    240747 ns/op	  209396 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4990	    240472 ns/op	  209340 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4665	    242078 ns/op	  209364 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4963	    240912 ns/op	  209388 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4914	    241582 ns/op	  209348 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4916	    241097 ns/op	  209383 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    5086	    245398 ns/op	  209401 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4978	    241641 ns/op	  209392 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=std-10         	    4922	    240544 ns/op	  209381 B/op	    2783 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6306	    191683 ns/op	  228822 B/op	    3901 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6259	    194005 ns/op	  228814 B/op	    3901 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6247	    192118 ns/op	  228834 B/op	    3901 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6260	    192501 ns/op	  228804 B/op	    3901 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6282	    192557 ns/op	  228787 B/op	    3900 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6153	    195713 ns/op	  228788 B/op	    3900 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6075	    196387 ns/op	  228809 B/op	    3901 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6236	    192127 ns/op	  228785 B/op	    3900 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6338	    192645 ns/op	  228824 B/op	    3901 allocs/op
+BenchmarkUnmarshal/L=jtr-10         	    6334	    192925 ns/op	  228796 B/op	    3900 allocs/op
+PASS
+ok  	playGo/bench/json	76.608s

@@ -1,0 +1,44 @@
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+          │     std     │                 jtr                 │
+          │   sec/op    │   sec/op     vs base                │
+Unmarshal   1.954µ ± 4%   1.416µ ± 1%  -27.54% (p=0.000 n=10)
+
+          │     std      │                 jtr                 │
+          │     B/op     │     B/op      vs base               │
+Unmarshal   1.376Ki ± 0%   1.360Ki ± 0%  -1.14% (p=0.000 n=10)
+
+          │    std     │                jtr                 │
+          │ allocs/op  │ allocs/op   vs base                │
+Unmarshal   29.00 ± 0%   34.00 ± 0%  +17.24% (p=0.000 n=10)
+---
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+          │     std     │                 jtr                 │
+          │   sec/op    │   sec/op     vs base                │
+Unmarshal   17.01µ ± 1%   11.22µ ± 2%  -34.03% (p=0.000 n=10)
+
+          │     std      │                 jtr                 │
+          │     B/op     │     B/op      vs base               │
+Unmarshal   10.10Ki ± 0%   10.99Ki ± 0%  +8.86% (p=0.000 n=10)
+
+          │    std     │                jtr                 │
+          │ allocs/op  │ allocs/op   vs base                │
+Unmarshal   205.0 ± 0%   268.0 ± 0%  +30.73% (p=0.000 n=10)
+---
+goos: darwin
+goarch: arm64
+pkg: playGo/bench/json
+          │     std     │                 jtr                 │
+          │   sec/op    │   sec/op     vs base                │
+Unmarshal   241.3µ ± 1%   192.6µ ± 2%  -20.19% (p=0.000 n=10)
+
+          │     std      │                 jtr                 │
+          │     B/op     │     B/op      vs base               │
+Unmarshal   204.5Ki ± 0%   223.4Ki ± 0%  +9.28% (p=0.000 n=10)
+
+          │     std     │                 jtr                 │
+          │  allocs/op  │  allocs/op   vs base                │
+Unmarshal   2.783k ± 0%   3.901k ± 0%  +40.17% (p=0.000 n=10)
