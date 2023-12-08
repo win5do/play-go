@@ -1,6 +1,6 @@
 goos: darwin
 goarch: arm64
-pkg: playGo/bench/json
+pkg: play-go/bench/json
         │     std     │                jtr                 │
         │   sec/op    │   sec/op     vs base               │
 Marshal   294.4n ± 1%   296.3n ± 1%  +0.63% (p=0.011 n=10)
@@ -17,7 +17,7 @@ Marshal   1.000 ± 0%   1.000 ± 0%  ~ (p=1.000 n=10) ¹
 ---
 goos: darwin
 goarch: arm64
-pkg: playGo/bench/json
+pkg: play-go/bench/json
         │     std     │                jtr                 │
         │   sec/op    │   sec/op     vs base               │
 Marshal   430.8n ± 1%   461.4n ± 1%  +7.13% (p=0.000 n=10)
@@ -34,7 +34,7 @@ Marshal   1.000 ± 0%   1.000 ± 0%  ~ (p=1.000 n=10) ¹
 ---
 goos: darwin
 goarch: arm64
-pkg: playGo/bench/json
+pkg: play-go/bench/json
         │     std     │                 jtr                 │
         │   sec/op    │   sec/op     vs base                │
 Marshal   495.2n ± 1%   379.1n ± 1%  -23.46% (p=0.000 n=10)

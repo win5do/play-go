@@ -1,6 +1,6 @@
 goos: darwin
 goarch: arm64
-pkg: playGo/bench/json
+pkg: play-go/bench/json
 BenchmarkUnmarshal/S=std-10         	  608883	      1946 ns/op	    1409 B/op	      29 allocs/op
 BenchmarkUnmarshal/S=std-10         	  625740	      1985 ns/op	    1409 B/op	      29 allocs/op
 BenchmarkUnmarshal/S=std-10         	  596000	      2022 ns/op	    1409 B/op	      29 allocs/op
@@ -62,4 +62,4 @@ BenchmarkUnmarshal/L=jtr-10         	    6236	    192127 ns/op	  228785 B/op	   
 BenchmarkUnmarshal/L=jtr-10         	    6338	    192645 ns/op	  228824 B/op	    3901 allocs/op
 BenchmarkUnmarshal/L=jtr-10         	    6334	    192925 ns/op	  228796 B/op	    3900 allocs/op
 PASS
-ok  	playGo/bench/json	76.608s
+ok  	play-go/bench/json	76.608s
