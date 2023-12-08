@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/list"
+	"play-go/algorithm/swordToOffer/dataStruct/list"
 )
 
 // 面试题18（一）：在O(1)时间删除链表结点

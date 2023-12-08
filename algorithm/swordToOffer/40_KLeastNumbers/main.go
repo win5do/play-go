@@ -3,8 +3,8 @@ package main
 import (
 	"container/heap"
 
-	"playGo/algorithm/swordToOffer/dataStruct/array"
-	"playGo/algorithm/swordToOffer/dataStruct/heapa"
+	"play-go/algorithm/swordToOffer/dataStruct/array"
+	"play-go/algorithm/swordToOffer/dataStruct/heapa"
 )
 
 // 面试题40：最小的k个数

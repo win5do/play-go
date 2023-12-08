@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/tree"
+	"play-go/algorithm/swordToOffer/dataStruct/tree"
 )
 
 // 面试题26：树的子结构

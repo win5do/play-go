@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"playGo/algorithm/swordToOffer/dataStruct/stack"
+	"play-go/algorithm/swordToOffer/dataStruct/stack"
 )
 
 // 面试题6：从尾到头打印链表

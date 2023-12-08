@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"playGo/design_patterns/interceptor/account"
-	"playGo/design_patterns/interceptor/proxy"
+	"play-go/design_patterns/interceptor/account"
+	"play-go/design_patterns/interceptor/proxy"
 )
 
 func main() {

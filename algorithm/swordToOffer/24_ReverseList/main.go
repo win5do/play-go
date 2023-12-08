@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/list"
+	"play-go/algorithm/swordToOffer/dataStruct/list"
 )
 
 // 面试题24：反转链表

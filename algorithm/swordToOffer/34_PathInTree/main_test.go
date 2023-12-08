@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"playGo/algorithm/swordToOffer/dataStruct/tree"
+	"play-go/algorithm/swordToOffer/dataStruct/tree"
 )
 
 func printResult(r [][]*tree.Tree) {

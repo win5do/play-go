@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/array"
+	"play-go/algorithm/swordToOffer/dataStruct/array"
 )
 
 // 面试题39：数组中出现次数超过一半的数字

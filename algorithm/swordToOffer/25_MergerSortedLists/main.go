@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/list"
+	"play-go/algorithm/swordToOffer/dataStruct/list"
 )
 
 // 面试题25：合并两个排序的链表

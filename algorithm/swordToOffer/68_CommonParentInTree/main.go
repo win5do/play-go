@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/tree"
+	"play-go/algorithm/swordToOffer/dataStruct/tree"
 )
 
 // 面试题68：树中两个结点的最低公共祖先

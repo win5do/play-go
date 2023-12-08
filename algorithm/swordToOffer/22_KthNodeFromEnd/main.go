@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/list"
+	"play-go/algorithm/swordToOffer/dataStruct/list"
 )
 
 // --- 使用两个指针遍历一次 ---

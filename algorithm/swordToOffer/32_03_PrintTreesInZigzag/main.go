@@ -4,7 +4,7 @@ import (
 	"container/list"
 	"fmt"
 
-	"playGo/algorithm/swordToOffer/dataStruct/tree"
+	"play-go/algorithm/swordToOffer/dataStruct/tree"
 )
 
 // 面试题32（三）：之字形打印二叉树

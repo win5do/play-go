@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"playGo/algorithm/swordToOffer/dataStruct/tree"
+	"play-go/algorithm/swordToOffer/dataStruct/tree"
 )
 
 // 面试题37：序列化二叉树

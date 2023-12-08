@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"playGo/algorithm/swordToOffer/dataStruct/list"
+	"play-go/algorithm/swordToOffer/dataStruct/list"
 
 	"github.com/stretchr/testify/assert"
 )

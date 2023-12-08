@@ -6,7 +6,7 @@ import (
 	"net"
 	"time"
 
-	"playGo/gogist/net/tcp/mockhttp"
+	"play-go/gogist/net/tcp/mockhttp"
 )
 
 func main() {

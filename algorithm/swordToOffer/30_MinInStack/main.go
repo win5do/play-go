@@ -1,7 +1,7 @@
 package main
 
 import (
-	"playGo/algorithm/swordToOffer/dataStruct/stack"
+	"play-go/algorithm/swordToOffer/dataStruct/stack"
 )
 
 // 面试题30：包含min函数的栈

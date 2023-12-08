@@ -1,4 +1,4 @@
-module playGo
+module play-go
 
 go 1.19
 

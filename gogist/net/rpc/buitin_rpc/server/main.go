@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"net/rpc"
 
-	"playGo/gogist/rpc/buitinRpc/common"
+	"play-go/gogist/rpc/buitinRpc/common"
 )
 
 type Arith int

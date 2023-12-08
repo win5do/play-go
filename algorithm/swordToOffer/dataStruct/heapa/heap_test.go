@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"playGo/algorithm/swordToOffer/dataStruct/heapa"
+	"play-go/algorithm/swordToOffer/dataStruct/heapa"
 )
 
 func TestMinHeap(t *testing.T) {

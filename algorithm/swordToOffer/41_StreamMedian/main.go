@@ -3,7 +3,7 @@ package main
 import (
 	"container/heap"
 
-	"playGo/algorithm/swordToOffer/dataStruct/heapa"
+	"play-go/algorithm/swordToOffer/dataStruct/heapa"
 )
 
 // 面试题41：数据流中的中位数
